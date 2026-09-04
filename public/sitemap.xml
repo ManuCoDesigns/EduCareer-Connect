@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://educareerconnect.org/</loc><priority>1.0</priority></url>
-  <url><loc>https://educareerconnect.org/about</loc><priority>0.8</priority></url>
-  <url><loc>https://educareerconnect.org/programs</loc><priority>0.8</priority></url>
-  <url><loc>https://educareerconnect.org/programs/career-guidance</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/programs/cbc-pathway-support</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/programs/counselling-wellness</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/programs/mentorship</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/programs/learning-resources</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/programs/partnerships</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/membership</loc><priority>0.9</priority></url>
-  <url><loc>https://educareerconnect.org/team</loc><priority>0.6</priority></url>
-  <url><loc>https://educareerconnect.org/gallery</loc><priority>0.5</priority></url>
-  <url><loc>https://educareerconnect.org/blog</loc><priority>0.7</priority></url>
-  <url><loc>https://educareerconnect.org/blog/understanding-cbc-pathways</loc><priority>0.5</priority></url>
-  <url><loc>https://educareerconnect.org/blog/preparing-for-your-first-guidance-session</loc><priority>0.5</priority></url>
-  <url><loc>https://educareerconnect.org/blog/why-mentorship-matters</loc><priority>0.5</priority></url>
-  <url><loc>https://educareerconnect.org/contact</loc><priority>0.7</priority></url>
+  <url><loc>https://www.educareer-connect.org/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.educareer-connect.org/about</loc><priority>0.8</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs</loc><priority>0.8</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs/career-guidance</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs/cbc-pathway-support</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs/counselling-wellness</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs/mentorship</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs/learning-resources</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/programs/partnerships</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/membership</loc><priority>0.9</priority></url>
+  <url><loc>https://www.educareer-connect.org/team</loc><priority>0.6</priority></url>
+  <url><loc>https://www.educareer-connect.org/gallery</loc><priority>0.5</priority></url>
+  <url><loc>https://www.educareer-connect.org/blog</loc><priority>0.7</priority></url>
+  <url><loc>https://www.educareer-connect.org/blog/understanding-cbc-pathways</loc><priority>0.5</priority></url>
+  <url><loc>https://www.educareer-connect.org/blog/preparing-for-your-first-guidance-session</loc><priority>0.5</priority></url>
+  <url><loc>https://www.educareer-connect.org/blog/why-mentorship-matters</loc><priority>0.5</priority></url>
+  <url><loc>https://www.educareer-connect.org/contact</loc><priority>0.7</priority></url>
 </urlset>

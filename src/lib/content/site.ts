@@ -10,7 +10,7 @@ export const ORG = {
   email: "victoriawakoli@gmail.com",
   phone: "+254796040638",
   phoneDisplay: "+254 796 040 638",
-  siteUrl: "https://educareerconnect.org",
+  siteUrl: "https://www.educareer-connect.org",
 };
 
 export const NAV = [

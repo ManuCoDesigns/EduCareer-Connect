@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://educareerconnect.org/sitemap.xml
+Sitemap: https://www.educareer-connect.org/sitemap.xml
