@@ -13,8 +13,9 @@
   <url><loc>https://www.educareer-connect.org/team</loc><priority>0.6</priority></url>
   <url><loc>https://www.educareer-connect.org/gallery</loc><priority>0.5</priority></url>
   <url><loc>https://www.educareer-connect.org/blog</loc><priority>0.7</priority></url>
-  <url><loc>https://www.educareer-connect.org/blog/understanding-cbc-pathways</loc><priority>0.5</priority></url>
-  <url><loc>https://www.educareer-connect.org/blog/preparing-for-your-first-guidance-session</loc><priority>0.5</priority></url>
-  <url><loc>https://www.educareer-connect.org/blog/why-mentorship-matters</loc><priority>0.5</priority></url>
+  <!-- Individual blog posts are placeholder content — omitted here and
+       marked noindex on the pages themselves (see src/lib/seo.ts /
+       src/lib/content/gallery-blog.ts). Add back once real articles
+       replace the placeholder body text, and resubmit the sitemap. -->
   <url><loc>https://www.educareer-connect.org/contact</loc><priority>0.7</priority></url>
 </urlset>
