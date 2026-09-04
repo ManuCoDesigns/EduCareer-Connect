@@ -33,16 +33,25 @@ export function CTASection({
   secondaryHref?: string;
 }) {
   return (
-    <div className="card-elegant relative overflow-hidden p-8 sm:p-12">
-      <div className="max-w-xl">
+    <div className="hero-surface pattern-topo relative overflow-hidden rounded-2xl p-8 sm:p-12">
+      <div
+        className="gradient-blob gradient-blob-gold -right-12 -top-12 size-64"
+        aria-hidden="true"
+      />
+      <div className="relative max-w-xl">
         <h2 className="text-3xl sm:text-4xl">{title}</h2>
-        <p className="mt-3 text-muted-foreground">{lede}</p>
+        <p className="mt-3 text-primary-foreground/80">{lede}</p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <Button asChild size="lg">
+          <Button asChild size="lg" variant="secondary">
             <Link to={primaryHref}>{primaryLabel}</Link>
           </Button>
           {secondaryLabel && secondaryHref && (
-            <Button asChild size="lg" variant="outline">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-gold/60 bg-transparent text-gold hover:bg-gold hover:text-gold-foreground"
+            >
               <Link to={secondaryHref}>
                 {secondaryLabel} <ArrowRight className="size-4" />
               </Link>
@@ -65,7 +74,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
           className="mb-4 size-16 rounded-full object-cover"
         />
       ) : (
-        <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-secondary text-lg font-semibold text-primary">
+        <div className="icon-badge mb-4 flex size-16 items-center justify-center rounded-full text-lg font-semibold text-primary-foreground">
           {member.role
             .split(" ")
             .map((w) => w[0])
@@ -105,7 +114,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
     <Link
       to="/blog/$slug"
       params={{ slug: post.slug }}
-      className="card-elegant group flex flex-col p-6 transition-shadow hover:shadow-lg"
+      className="card-elegant group flex flex-col p-6"
     >
       <p className="text-xs font-medium text-primary">{post.category}</p>
       <h3 className="mt-3 text-xl leading-snug group-hover:text-primary">{post.title}</h3>

@@ -39,7 +39,7 @@ function ProgramsPage() {
                 params={{ slug: p.slug }}
                 className="card-elegant group flex h-full flex-col p-6"
               >
-                <span className="inline-flex size-11 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <span className="inline-flex size-11 items-center justify-center rounded-lg icon-badge text-primary-foreground">
                   <p.icon className="size-5" />
                 </span>
                 <h3 className="mt-5 text-xl group-hover:text-primary">{p.title}</h3>

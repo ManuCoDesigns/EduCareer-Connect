@@ -35,7 +35,15 @@ function Home() {
       <main>
         {/* Hero — asymmetric, angular photo frame + live-feeling stat strip
             instead of the centered gradient + circular photo pattern. */}
-        <section className="hero-surface overflow-hidden">
+        <section className="hero-surface pattern-topo overflow-hidden">
+          <div
+            className="gradient-blob gradient-blob-gold -right-10 top-10 size-80"
+            aria-hidden="true"
+          />
+          <div
+            className="gradient-blob gradient-blob-leaf -bottom-32 -left-10 size-72"
+            aria-hidden="true"
+          />
           <PageContainer className="grid items-center gap-12 py-20 md:grid-cols-[1.15fr_1fr] md:py-28">
             <div>
               <p className="reveal-on-load flex items-center gap-2 text-xs font-medium text-gold">
@@ -170,7 +178,7 @@ function Home() {
                   params={{ slug: p.slug }}
                   className="card-elegant group block p-6"
                 >
-                  <span className="inline-flex size-11 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <span className="inline-flex size-11 items-center justify-center rounded-lg icon-badge text-primary-foreground">
                     <p.icon className="size-5" />
                   </span>
                   <h3 className="mt-5 text-xl group-hover:text-primary">{p.title}</h3>

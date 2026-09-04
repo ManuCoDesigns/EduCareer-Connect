@@ -87,7 +87,15 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section className="hero-surface overflow-hidden">
+    <section className="hero-surface pattern-topo overflow-hidden">
+      <div
+        className="gradient-blob gradient-blob-gold -right-16 -top-24 size-72"
+        aria-hidden="true"
+      />
+      <div
+        className="gradient-blob gradient-blob-leaf -bottom-24 left-1/3 size-64"
+        aria-hidden="true"
+      />
       <PageContainer className="py-16 sm:py-20">
         {eyebrow && <p className="reveal-on-load text-xs font-medium text-gold">{eyebrow}</p>}
         <h1

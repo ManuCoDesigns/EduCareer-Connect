@@ -43,7 +43,7 @@ function ProgramDetailPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <span className="inline-flex size-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <span className="inline-flex size-12 items-center justify-center rounded-lg icon-badge text-primary-foreground">
               <program.icon className="size-6" />
             </span>
             <h2 className="mt-6 text-2xl">How it works</h2>
@@ -69,7 +69,7 @@ function ProgramDetailPage() {
               key={p.slug}
               to="/programs/$slug"
               params={{ slug: p.slug }}
-              className="card-elegant p-5 transition-shadow hover:shadow-lg"
+              className="card-elegant p-5"
             >
               <h3 className="text-lg">{p.title}</h3>
               <p className="mt-1.5 text-sm text-muted-foreground">{p.summary}</p>

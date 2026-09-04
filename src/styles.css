@@ -292,3 +292,101 @@ button.card-elegant:hover {
 .nav-link[data-active="true"]::after {
   transform: scaleX(1);
 }
+
+/* ------------------------------------------------------------------ */
+/* Wayfinding system: a topographic contour texture (concentric rings,
+   like a map) plus soft green/gold gradient blobs — literal to the
+   brand's "guidance / pathways" subject rather than generic decoration.
+   Used on hero-surface and CTA sections only, kept quiet elsewhere. */
+
+.pattern-topo {
+  position: relative;
+  isolation: isolate;
+}
+
+.pattern-topo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-radial-gradient(
+    circle at 15% 20%,
+    transparent 0,
+    transparent 44px,
+    oklch(0.98 0.012 95 / 0.05) 45px,
+    oklch(0.98 0.012 95 / 0.05) 46px
+  );
+}
+
+.pattern-topo > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-blob {
+  position: absolute;
+  z-index: 0;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.gradient-blob-gold {
+  background: radial-gradient(circle, oklch(0.74 0.13 86 / 0.35) 0%, transparent 70%);
+}
+
+.gradient-blob-leaf {
+  background: radial-gradient(circle, oklch(0.58 0.13 138 / 0.3) 0%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gradient-blob {
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(18px, -14px) scale(1.08);
+  }
+}
+
+/* Card icon badge — gradient fill instead of a flat block, ties every
+   program/step icon back to the same green→gold brand gradient. */
+.icon-badge {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--leaf) 100%);
+  box-shadow: 0 6px 16px -6px oklch(0.36 0.09 154 / 0.5);
+}
+
+/* Card system depth: a 2px gradient accent strip that appears on hover,
+   plus a warm glow replacing the flat shadow. Structural (marks
+   interactivity), not purely decorative. */
+.card-elegant {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-elegant::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+a.card-elegant:hover::before,
+button.card-elegant:hover::before {
+  transform: scaleX(1);
+}
+
+a.card-elegant:hover,
+button.card-elegant:hover {
+  box-shadow: 0 20px 45px -18px oklch(0.36 0.09 154 / 0.4), 0 0 0 1px oklch(0.74 0.13 86 / 0.15);
+}
