@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedStat } from "@/components/common/AnimatedStat";
 import type { Stat } from "@/lib/content/misc";
 import type { TeamMember } from "@/lib/content/team";
 import type { Testimonial } from "@/lib/content/misc";
@@ -10,10 +11,7 @@ export function StatStrip({ stats }: { stats: Stat[] }) {
   return (
     <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
       {stats.map((s) => (
-        <div key={s.label} className="border-l-2 border-gold pl-4">
-          <p className="font-display text-3xl text-primary sm:text-4xl">{s.value}</p>
-          <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
-        </div>
+        <AnimatedStat key={s.label} value={s.value} label={s.label} />
       ))}
     </div>
   );

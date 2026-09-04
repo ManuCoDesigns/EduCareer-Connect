@@ -6,9 +6,13 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { nitro } from "nitro/vite";
 
 // Plain Vite + TanStack Start config for local development and self-hosted
-// deployment. Change `nitro({ preset: ... })` below to target a specific
-// host (e.g. "vercel", "netlify", "cloudflare-module", "node-server") —
-// see https://nitro.build/deploy for the full list of presets.
+// deployment. The Nitro preset auto-switches to "vercel" when building on
+// Vercel's platform (detected via the VERCEL env var it sets), and falls
+// back to the portable "node-server" preset everywhere else — including
+// your local machine. To target a different host manually (Netlify,
+// Cloudflare, etc.), see https://nitro.build/deploy for the preset list.
+const nitroPreset = process.env["VERCEL"] ? "vercel" : "node-server";
+
 export default defineConfig({
   css: { transformer: "lightningcss" },
   resolve: {
@@ -39,7 +43,7 @@ export default defineConfig({
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart(),
-    nitro({ preset: "node-server" }),
+    nitro({ preset: nitroPreset }),
     viteReact(),
   ],
 });

@@ -27,7 +27,8 @@ export function SiteHeader() {
               <Link
                 key={n.href}
                 to={n.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                data-active={active}
+                className={`nav-link text-sm font-medium transition-colors hover:text-primary ${
                   active ? "text-primary" : "text-muted-foreground"
                 }`}
               >

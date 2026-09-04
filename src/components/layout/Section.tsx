@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
+import { Reveal } from "@/components/common/Reveal";
 
 export function PageContainer({
   children,
@@ -43,11 +44,11 @@ export function SectionHeading({
   align?: "left" | "center";
 }) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+    <Reveal className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       <div className={`gold-rule ${align === "center" ? "mx-auto" : ""}`} />
       <h2 className="mt-4 text-3xl sm:text-4xl">{title}</h2>
       {lede && <p className="mt-3 text-muted-foreground">{lede}</p>}
-    </div>
+    </Reveal>
   );
 }
 
@@ -86,16 +87,31 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section className="hero-surface">
+    <section className="hero-surface overflow-hidden">
       <PageContainer className="py-16 sm:py-20">
-        {eyebrow && <p className="text-xs font-medium text-gold">{eyebrow}</p>}
-        <h1 className="mt-4 max-w-2xl text-4xl leading-[1.1] sm:text-5xl">{title}</h1>
+        {eyebrow && <p className="reveal-on-load text-xs font-medium text-gold">{eyebrow}</p>}
+        <h1
+          className="reveal-on-load mt-4 max-w-2xl text-4xl leading-[1.1] sm:text-5xl"
+          style={{ animationDelay: "80ms" }}
+        >
+          {title}
+        </h1>
         {lede && (
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85">
+          <p
+            className="reveal-on-load mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85"
+            style={{ animationDelay: "160ms" }}
+          >
             {lede}
           </p>
         )}
-        {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
+        {actions && (
+          <div
+            className="reveal-on-load mt-8 flex flex-wrap gap-3"
+            style={{ animationDelay: "240ms" }}
+          >
+            {actions}
+          </div>
+        )}
       </PageContainer>
     </section>
   );
