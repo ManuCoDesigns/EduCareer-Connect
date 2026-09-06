@@ -21,6 +21,51 @@ export const GALLERY: GalleryItem[] = [
     alt: "Founder Victoria Wakoli at a school courtyard",
     caption: "Between sessions",
   },
+  {
+    url: "/images/victoria-facilitating-workshop.jpg",
+    alt: "Facilitator presenting to a group in a workshop setting",
+    caption: "Facilitating a training session",
+  },
+  {
+    url: "/images/victoria-portrait-coffee.jpg",
+    alt: "Founder Victoria Wakoli, professional portrait",
+    caption: "Founder Victoria Wakoli",
+  },
+  {
+    url: "/images/poster-victoria-philosophy.jpg",
+    alt: "Victoria Wakoli — Educator, Mentor, Leader: teaching philosophy and approach",
+    caption: "Our founder's teaching philosophy",
+  },
+  {
+    url: "/images/poster-victoria-focused-determined.jpg",
+    alt: "Victoria Wakoli — Focused, Determined, Limitless",
+    caption: "Focused. Determined. Limitless.",
+  },
+  {
+    url: "/images/poster-top10-teacher-skills.jpg",
+    alt: "Top 10 skills modern teachers must master, essential for tech-driven classrooms",
+    caption: "Top 10 skills modern teachers must master",
+  },
+  {
+    url: "/images/poster-digital-inclusion.jpg",
+    alt: "Promoting digital inclusion in teaching — ensuring no learner is left behind",
+    caption: "Promoting digital inclusion in teaching",
+  },
+  {
+    url: "/images/poster-teaching-methods.jpg",
+    alt: "Powerful teaching methods — inspire, engage, empower",
+    caption: "Powerful teaching methods",
+  },
+  {
+    url: "/images/poster-power-of-demonstration.jpg",
+    alt: "The power of demonstration in teaching",
+    caption: "The power of demonstration in teaching",
+  },
+  {
+    url: "/images/poster-every-learner-can-grow.jpg",
+    alt: "Every learner can grow with the right guidance",
+    caption: "Every learner can grow with the right guidance",
+  },
 ];
 
 export type BlogPost = {
