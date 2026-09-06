@@ -49,7 +49,17 @@ function BlogPostPage() {
             {date} · {post.readMinutes} min read
           </p>
           <div className="mt-8 space-y-4 text-base leading-relaxed text-foreground">
-            <p>{post.body}</p>
+            {post.body.split("\n\n").map((block) => {
+              const heading = block.match(/^## (.+)$/);
+              if (heading) {
+                return (
+                  <h2 key={block} className="!mt-8 text-xl">
+                    {heading[1]}
+                  </h2>
+                );
+              }
+              return <p key={block}>{block}</p>;
+            })}
           </div>
           <Link
             to="/blog"
