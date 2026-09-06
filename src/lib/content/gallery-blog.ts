@@ -1,21 +1,26 @@
-import logo from "@/assets/Logo.png.asset.json";
-import founder1 from "@/assets/founder-1.jpeg.asset.json";
-import founder2 from "@/assets/founder-2.png.asset.json";
-import profile from "@/assets/profile.jpeg.asset.json";
-
 export type GalleryItem = {
   url: string;
   alt: string;
   caption: string;
 };
 
-// Placeholder gallery using the existing assets — swap for real event/program
-// photos once available. Keep captions descriptive for SEO/alt-text quality.
+// Real photos — replace/add to as more program and event photos come in.
 export const GALLERY: GalleryItem[] = [
-  { url: founder1.url, alt: "ECCO founder at her desk", caption: "Founder Victoria Wakoli" },
-  { url: founder2.url, alt: "ECCO founder portrait", caption: "Founder portrait" },
-  { url: profile.url, alt: "ECCO founder profile photo", caption: "At work" },
-  { url: logo.url, alt: "EduCareer Connect Organization emblem", caption: "Our emblem" },
+  {
+    url: "/images/learners-art-activity.jpg",
+    alt: "Learners' hands mixing blue paint during a hands-on art activity",
+    caption: "Hands-on learning in action",
+  },
+  {
+    url: "/images/victoria-team.jpg",
+    alt: "Founder Victoria Wakoli standing outside a partner school",
+    caption: "Founder Victoria Wakoli on site at a partner school",
+  },
+  {
+    url: "/images/victoria-candid.jpg",
+    alt: "Founder Victoria Wakoli at a school courtyard",
+    caption: "Between sessions",
+  },
 ];
 
 export type BlogPost = {
@@ -26,6 +31,11 @@ export type BlogPost = {
   date: string;
   readMinutes: number;
   category: string;
+  /** True until this post's placeholder body is replaced with real content.
+   * Gates the post out of the sitemap and marks it noindex so search
+   * engines don't crawl and rank placeholder text. Flip to false (or
+   * remove the field) once real content is in. */
+  isPlaceholder?: boolean;
 };
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -38,6 +48,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-15",
     readMinutes: 5,
     category: "CBC Guidance",
+    isPlaceholder: true,
   },
   {
     slug: "preparing-for-your-first-guidance-session",
@@ -48,6 +59,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-07-02",
     readMinutes: 4,
     category: "Guidance",
+    isPlaceholder: true,
   },
   {
     slug: "why-mentorship-matters",
@@ -58,5 +70,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-05-20",
     readMinutes: 6,
     category: "Mentorship",
+    isPlaceholder: true,
   },
 ];

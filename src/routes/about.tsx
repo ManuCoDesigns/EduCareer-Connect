@@ -8,7 +8,6 @@ import { VALUES } from "@/lib/content/programs";
 import { MEMBERSHIP_TIERS } from "@/lib/content/misc";
 import { ORG } from "@/lib/content/site";
 import { pageMeta, breadcrumbSchema } from "@/lib/seo";
-import founder1 from "@/assets/founder-1.jpeg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -72,7 +71,7 @@ function AboutPage() {
 
           <figure className="card-elegant overflow-hidden p-0">
             <img
-              src={founder1.url}
+              src="/images/victoria-about.jpg"
               alt={`${ORG.founder}, founder of ${ORG.name}`}
               loading="lazy"
               className="aspect-[4/5] w-full object-cover"

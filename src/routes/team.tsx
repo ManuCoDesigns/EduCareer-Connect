@@ -6,7 +6,6 @@ import { TeamCard } from "@/components/common/Blocks";
 import { FOUNDER, GOVERNANCE, GOVERNANCE_NOTE } from "@/lib/content/team";
 import { ORG } from "@/lib/content/site";
 import { pageMeta } from "@/lib/seo";
-import founder2 from "@/assets/founder-2.png.asset.json";
 
 export const Route = createFileRoute("/team")({
   head: () =>
@@ -33,7 +32,7 @@ function TeamPage() {
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]">
           <figure className="card-elegant overflow-hidden p-0">
             <img
-              src={founder2.url}
+              src="/images/victoria-team.jpg"
               alt={`${FOUNDER.name}, ${FOUNDER.role} of ${ORG.name}`}
               loading="lazy"
               className="aspect-[4/5] w-full object-cover"
@@ -43,6 +42,11 @@ function TeamPage() {
             <p className="text-xs font-medium text-primary">{FOUNDER.role}</p>
             <h2 className="mt-2 text-3xl">{FOUNDER.name}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
+            {FOUNDER.quote && (
+              <blockquote className="mt-6 border-l-2 border-gold pl-4 text-sm italic leading-relaxed text-foreground">
+                “{FOUNDER.quote}”
+              </blockquote>
+            )}
           </div>
         </div>
       </Section>

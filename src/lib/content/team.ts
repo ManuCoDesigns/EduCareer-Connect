@@ -3,12 +3,15 @@ export type TeamMember = {
   role: string;
   bio: string;
   photo?: string;
+  quote?: string;
 };
 
 export const FOUNDER: TeamMember = {
   name: "Victoria Wakoli",
   role: "Founder",
   bio: "Victoria founded ECCO to close the gap between classroom learning and real career pathways for Kenyan learners, guiding its vision and day-to-day work since inception.",
+  quote:
+    "I believe that education is the most powerful tool to transform lives and communities. My purpose as a teacher is to ignite curiosity, build confidence, and empower every learner to reach their full potential.",
 };
 
 export const GOVERNANCE: TeamMember[] = [

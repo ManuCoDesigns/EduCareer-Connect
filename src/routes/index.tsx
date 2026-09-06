@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, ArrowRight } from "lucide-react";
 import logo from "@/assets/Logo.png.asset.json";
-import profile from "@/assets/profile.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -90,7 +89,7 @@ function Home() {
               <div className="absolute -inset-4 -z-10 rounded-[2rem] border border-gold/25" />
               <div className="overflow-hidden rounded-[1.75rem] shadow-elegant">
                 <img
-                  src={profile.url}
+                  src="/images/victoria-hero.jpg"
                   alt={`${ORG.founder}, founder of ${ORG.name}, at her desk`}
                   className="aspect-[4/5] w-full object-cover"
                 />
