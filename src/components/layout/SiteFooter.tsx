@@ -1,6 +1,60 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { FOOTER_LINKS, ORG } from "@/lib/content/site";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Youtube,
+  Twitter,
+  Send,
+  MessageCircle,
+} from "lucide-react";
+import { toast } from "sonner";
+import { FOOTER_LINKS, SOCIAL_LINKS, ORG } from "@/lib/content/site";
+import type { SocialLink } from "@/lib/content/site";
+
+const SOCIAL_ICONS: Record<string, typeof Facebook> = {
+  WhatsApp: MessageCircle,
+  Twitter,
+  Facebook,
+  Instagram,
+  Telegram: Send,
+  YouTube: Youtube,
+};
+
+function SocialIcon({ link }: { link: SocialLink }) {
+  const Icon = SOCIAL_ICONS[link.platform] ?? MessageCircle;
+
+  if (!link.href) {
+    return (
+      <button
+        type="button"
+        onClick={() =>
+          toast(`${link.platform} — coming soon`, {
+            description: `We haven't launched our ${link.platform} yet. Check back soon.`,
+          })
+        }
+        aria-label={`${link.platform} (coming soon)`}
+        className="flex size-9 items-center justify-center rounded-full border border-primary-foreground/15 text-primary-foreground/60 transition-colors hover:border-gold/50 hover:text-gold"
+      >
+        <Icon className="size-4" />
+      </button>
+    );
+  }
+
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={link.platform}
+      className="flex size-9 items-center justify-center rounded-full border border-primary-foreground/15 text-primary-foreground/70 transition-colors hover:border-gold/50 hover:text-gold"
+    >
+      <Icon className="size-4" />
+    </a>
+  );
+}
 
 export function SiteFooter() {
   return (
@@ -15,6 +69,11 @@ export function SiteFooter() {
             {ORG.tagline}. A non-profit, non-political and non-religious organization serving every
             learner.
           </p>
+          <div className="mt-5 flex gap-2.5">
+            {SOCIAL_LINKS.map((link) => (
+              <SocialIcon key={link.platform} link={link} />
+            ))}
+          </div>
         </div>
 
         <div>

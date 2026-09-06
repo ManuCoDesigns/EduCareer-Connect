@@ -31,3 +31,23 @@ export const FOOTER_LINKS = [
   { label: "Membership", href: "/membership" },
   { label: "Contact", href: "/contact" },
 ];
+
+/**
+ * Social links — none of these accounts exist yet. Each entry renders as a
+ * "coming soon" icon (no navigation) until a real href is added here. Once
+ * an account launches, set its href and this becomes a normal working link
+ * with no other code changes needed.
+ */
+export type SocialLink = {
+  platform: string;
+  href: string | null;
+};
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { platform: "WhatsApp", href: null },
+  { platform: "Twitter", href: null },
+  { platform: "Facebook", href: null },
+  { platform: "Instagram", href: null },
+  { platform: "Telegram", href: null },
+  { platform: "YouTube", href: null },
+];

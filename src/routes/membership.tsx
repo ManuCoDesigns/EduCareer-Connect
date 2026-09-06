@@ -64,7 +64,12 @@ function MembershipPage() {
 
       <Section tone="muted">
         <h2 className="text-2xl">Frequently asked questions</h2>
-        <Accordion type="single" collapsible className="mt-8">
+        <Accordion
+          type="single"
+          collapsible
+          defaultValue={FAQS[0]?.question ?? ""}
+          className="mt-8"
+        >
           {FAQS.map((f) => (
             <AccordionItem key={f.question} value={f.question}>
               <AccordionTrigger className="text-left text-base font-semibold hover:text-primary hover:no-underline">

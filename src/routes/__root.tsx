@@ -15,6 +15,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Button } from "@/components/ui/button";
+import { ChatWidget } from "@/components/site/ChatWidget";
 
 function NotFoundComponent() {
   return (
@@ -140,6 +141,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
+      <ChatWidget />
     </QueryClientProvider>
   );
 }
