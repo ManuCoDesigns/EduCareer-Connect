@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
-import logo from "@/assets/Logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { NAV, ORG } from "@/lib/content/site";
@@ -14,7 +13,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo.url} alt={`${ORG.name} logo`} className="h-11 w-11 object-contain" />
+          <img
+            src="/images/logo.png"
+            alt={`${ORG.name} logo`}
+            className="h-11 w-11 object-contain"
+          />
           <span className="hidden text-lg font-semibold leading-tight sm:block">
             EduCareer <span className="text-primary">Connect</span>
           </span>

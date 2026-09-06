@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/Logo.png.asset.json";
 import { FOOTER_LINKS, ORG } from "@/lib/content/site";
 
 export function SiteFooter() {
@@ -9,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo.url} alt="" className="h-12 w-12 object-contain" />
+            <img src="/images/logo.png" alt="" className="h-12 w-12 object-contain" />
             <span className="text-lg font-semibold">EduCareer Connect</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/75">

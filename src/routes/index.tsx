@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, ArrowRight } from "lucide-react";
-import logo from "@/assets/Logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -95,7 +94,7 @@ function Home() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 flex items-center gap-3 rounded-xl bg-background p-3 pr-5 shadow-elegant">
-                <img src={logo.url} alt="" className="size-11 object-contain" />
+                <img src="/images/logo.png" alt="" className="size-11 object-contain" />
                 <div>
                   <p className="text-sm font-semibold text-foreground">{ORG.founder}</p>
                   <p className="text-xs text-muted-foreground">Founder, {ORG.abbreviation}</p>
