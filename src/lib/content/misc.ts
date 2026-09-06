@@ -3,7 +3,7 @@ export type Stat = { value: string; label: string };
 export const STATS: Stat[] = [
   { value: "6", label: "Focus programs" },
   { value: "1", label: "County served — expanding" },
-  { value: "3", label: "CBC pathways covered" },
+  { value: "3", label: "CBE pathways covered" },
   { value: "2026", label: "Year founded" },
 ];
 

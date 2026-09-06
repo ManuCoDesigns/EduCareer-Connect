@@ -24,16 +24,16 @@ export const PROGRAMS: Program[] = [
     title: "Career Guidance",
     summary:
       "One-on-one and group sessions that help learners map subjects, pathways and careers with confidence.",
-    body: "Learners meet with trained guidance officers to assess strengths, interests and CBC pathway options, leaving each session with a concrete next step rather than a generic list of careers.",
+    body: "Learners meet with trained guidance officers to assess strengths, interests and CBE pathway options, leaving each session with a concrete next step rather than a generic list of careers.",
     audience: "Grade 7–9 learners preparing for pathway selection",
   },
   {
     slug: "cbc-pathway-support",
     icon: GraduationCap,
-    title: "CBC Pathway Support",
+    title: "CBE Pathway Support",
     summary:
-      "Practical support for learners, parents and teachers navigating Competency-Based Curriculum transitions.",
-    body: "Workshops that translate CBC's three pathways — Arts & Sports Science, Social Sciences, and STEM — into plain language, with guidance on subject combinations and what each pathway leads to.",
+      "Practical support for learners, parents and teachers navigating Competency-Based Education transitions.",
+    body: "Workshops that translate CBE's three pathways — Arts & Sports Science, Social Sciences, and STEM — into plain language, with guidance on subject combinations and what each pathway leads to.",
     audience: "Learners, parents and teachers at transition points",
   },
   {
@@ -59,7 +59,7 @@ export const PROGRAMS: Program[] = [
     icon: BookOpen,
     title: "Learning Resources",
     summary: "Career handbooks, assessment tools and workshops developed for Kenyan classrooms.",
-    body: "Printed and digital resources — self-assessment tools, pathway comparison guides, and facilitator handbooks — built specifically for the Kenyan CBC context and shared with partner schools.",
+    body: "Printed and digital resources — self-assessment tools, pathway comparison guides, and facilitator handbooks — built specifically for the Kenyan CBE context and shared with partner schools.",
     audience: "Teachers and school guidance departments",
   },
   {

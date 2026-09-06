@@ -13,7 +13,7 @@ export const Route = createFileRoute("/programs/")({
   head: () =>
     pageMeta({
       title: "Programs",
-      description: `The six career guidance, counselling and mentorship programs delivered by ${ORG.abbreviation} for Kenyan learners under CBC.`,
+      description: `The six career guidance, counselling and mentorship programs delivered by ${ORG.abbreviation} for Kenyan learners under CBE.`,
       path: "/programs",
     }),
   component: ProgramsPage,
@@ -26,7 +26,7 @@ function ProgramsPage() {
       <PageHero
         eyebrow="Our programs"
         title="Six ways we support learners, families and schools."
-        lede="Every program traces back to ECCO's constitutional objectives — practical support at each step of a learner's CBC journey."
+        lede="Every program traces back to ECCO's constitutional objectives — practical support at each step of a learner's CBE journey."
       />
       <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: "Programs" }]} />
 

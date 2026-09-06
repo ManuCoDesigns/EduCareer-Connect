@@ -1,7 +1,32 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Reveal } from "@/components/common/Reveal";
 import type { GalleryItem } from "@/lib/content/gallery-blog";
+
+function GalleryThumb({ item, onOpen }: { item: GalleryItem; onOpen: () => void }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-secondary"
+    >
+      <img
+        src={item.url}
+        alt={item.alt}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        className={`size-full object-cover transition-[opacity,transform] duration-500 group-hover:scale-105 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-2 text-left text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
+        {item.caption}
+      </span>
+    </button>
+  );
+}
 
 export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   const [active, setActive] = useState<GalleryItem | null>(null);
@@ -9,23 +34,10 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   return (
     <>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {items.map((item) => (
-          <button
-            key={item.url + item.caption}
-            type="button"
-            onClick={() => setActive(item)}
-            className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-secondary"
-          >
-            <img
-              src={item.url}
-              alt={item.alt}
-              loading="lazy"
-              className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-2 text-left text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-              {item.caption}
-            </span>
-          </button>
+        {items.map((item, i) => (
+          <Reveal key={item.url + item.caption} delayMs={(i % 4) * 70}>
+            <GalleryThumb item={item} onOpen={() => setActive(item)} />
+          </Reveal>
         ))}
       </div>
 

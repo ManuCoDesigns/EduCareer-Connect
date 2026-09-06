@@ -8,28 +8,38 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { Compass } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { Button } from "@/components/ui/button";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+      <section className="hero-surface pattern-topo overflow-hidden">
+        <div
+          className="gradient-blob gradient-blob-gold -right-10 top-10 size-72"
+          aria-hidden="true"
+        />
+        <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-24 text-center sm:py-32">
+          <span className="icon-badge flex size-14 items-center justify-center rounded-full text-primary-foreground">
+            <Compass className="size-6" />
+          </span>
+          <h1 className="mt-6 text-5xl sm:text-6xl">Off the mapped pathway</h1>
+          <p className="mt-4 max-w-md text-primary-foreground/85">
+            We couldn't find the page you were looking for — it may have moved, or the link might be
+            out of date.
+          </p>
+          <Button asChild size="lg" variant="secondary" className="mt-8">
+            <Link to="/">Back to home</Link>
+          </Button>
         </div>
-      </div>
+      </section>
+      <SiteFooter />
     </div>
   );
 }
@@ -77,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "EduCareer Connect Organization" },
       {
         name: "description",
-        content: "CBC-aligned career guidance, counselling and mentorship for Kenyan learners.",
+        content: "CBE-aligned career guidance, counselling and mentorship for Kenyan learners.",
       },
       { name: "author", content: "EduCareer Connect Organization" },
       { property: "og:title", content: "EduCareer Connect Organization" },

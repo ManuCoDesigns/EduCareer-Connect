@@ -117,7 +117,7 @@ function Home() {
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 {ORG.abbreviation} ({ORG.name}) is a non-profit body registered in Kenya with its
                 office in {ORG.location}. We exist to close the gap between classroom learning and
-                real career pathways — supporting CBC implementation, nurturing mental wellness, and
+                real career pathways — supporting CBE implementation, nurturing mental wellness, and
                 building partnerships that carry learners from school into the job market.{" "}
                 {ORG.abbreviation} was founded by {ORG.founder}.
               </p>
@@ -147,7 +147,7 @@ function Home() {
                 },
                 {
                   k: "Mission",
-                  v: "Accessible and impactful career guidance aligned with the Competency-Based Curriculum.",
+                  v: "Accessible and impactful career guidance aligned with the Competency-Based Education.",
                 },
                 {
                   k: "Mandate",

@@ -4,7 +4,7 @@ export const ORG = {
   abbreviation: "ECCO",
   tagline: "Guiding Competence, Shaping Futures",
   description:
-    "ECCO provides CBC-aligned career guidance, counselling and mentorship that turns Kenyan learners into competent, purpose-driven professionals.",
+    "ECCO provides CBE-aligned career guidance, counselling and mentorship that turns Kenyan learners into competent, purpose-driven professionals.",
   founder: "Victoria Wakoli",
   location: "Wote, Makueni County, Kenya",
   email: "victoriawakoli@gmail.com",

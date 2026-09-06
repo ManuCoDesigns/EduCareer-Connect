@@ -81,10 +81,10 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "understanding-cbc-pathways",
-    title: "Understanding the three CBC pathways",
+    title: "Understanding the three CBE pathways",
     excerpt:
       "A plain-language breakdown of STEM, Social Sciences, and Arts and Sports Science — and why getting this choice right matters more than it used to.",
-    body: `Since January 2026, Kenya's first cohort of learners has moved from Junior School into Senior School — Grades 10 to 12 — under the Competency-Based Curriculum. It's the biggest structural change CBC has introduced so far: from Grade 10, every learner chooses one of three specialised pathways, and that choice shapes their subjects, their day-to-day school experience, and their options after Grade 12.
+    body: `Since January 2026, Kenya's first cohort of learners has moved from Junior School into Senior School — Grades 10 to 12 — under Competency-Based Education. It's the biggest structural change CBE has introduced so far: from Grade 10, every learner chooses one of three specialised pathways, and that choice shapes their subjects, their day-to-day school experience, and their options after Grade 12.
 
 ## The three pathways
 
@@ -107,7 +107,7 @@ A rushed pathway choice at 15, made under exam-season pressure, can narrow a you
 This is exactly where ECCO's Career Guidance sessions come in. We sit down with learners and parents before the choice is locked in, working through genuine strengths and interests against what STEM, Social Sciences and Arts and Sports Science each actually involve — so the decision is made with clear eyes, not guesswork.`,
     date: "2026-08-15",
     readMinutes: 5,
-    category: "CBC Guidance",
+    category: "CBE Guidance",
   },
   {
     slug: "preparing-for-your-first-guidance-session",

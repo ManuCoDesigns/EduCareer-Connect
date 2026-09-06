@@ -49,8 +49,8 @@ function AboutPage() {
               {ORG.name} ({ORG.abbreviation}) was founded by {ORG.founder} to address a gap many
               Kenyan learners face: strong classroom performance without a clear sense of what comes
               next. Based in {ORG.location}, ECCO delivers career guidance, counselling and
-              mentorship aligned with the Competency-Based Curriculum (CBC), helping learners,
-              parents and teachers navigate pathway decisions with confidence.
+              mentorship aligned with Competency-Based Education (CBE), helping learners, parents
+              and teachers navigate pathway decisions with confidence.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               We operate as a non-profit, non-political and non-religious organization, open to any
@@ -99,7 +99,7 @@ function AboutPage() {
             },
             {
               k: "Mission",
-              v: "Accessible and impactful career guidance aligned with the Competency-Based Curriculum.",
+              v: "Accessible and impactful career guidance aligned with Competency-Based Education.",
             },
             {
               k: "Mandate",

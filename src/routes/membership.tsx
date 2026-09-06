@@ -3,6 +3,12 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Breadcrumb, PageHero, Section } from "@/components/layout/Section";
 import { MembershipPayment } from "@/components/site/MembershipPayment";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { MEMBERSHIP_TIERS, MEMBERSHIP_BENEFITS, FAQS } from "@/lib/content/misc";
 import { ORG } from "@/lib/content/site";
 import { pageMeta } from "@/lib/seo";
@@ -58,14 +64,18 @@ function MembershipPage() {
 
       <Section tone="muted">
         <h2 className="text-2xl">Frequently asked questions</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <Accordion type="single" collapsible className="mt-8">
           {FAQS.map((f) => (
-            <div key={f.question}>
-              <h3 className="text-base font-semibold text-foreground">{f.question}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.answer}</p>
-            </div>
+            <AccordionItem key={f.question} value={f.question}>
+              <AccordionTrigger className="text-left text-base font-semibold hover:text-primary hover:no-underline">
+                {f.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                {f.answer}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </Section>
 
       <SiteFooter />

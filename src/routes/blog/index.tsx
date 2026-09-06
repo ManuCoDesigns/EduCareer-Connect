@@ -11,7 +11,7 @@ export const Route = createFileRoute("/blog/")({
   head: () =>
     pageMeta({
       title: "Blog",
-      description: `Guidance articles, CBC explainers and mentorship stories from ${ORG.abbreviation}.`,
+      description: `Guidance articles, CBE explainers and mentorship stories from ${ORG.abbreviation}.`,
       path: "/blog",
     }),
   component: BlogIndexPage,
@@ -24,7 +24,7 @@ function BlogIndexPage() {
       <PageHero
         eyebrow="Blog"
         title="Guidance, explained."
-        lede="Practical articles on CBC pathways, guidance sessions and mentorship — written for learners, parents and teachers."
+        lede="Practical articles on CBE pathways, guidance sessions and mentorship — written for learners, parents and teachers."
       />
       <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
 
