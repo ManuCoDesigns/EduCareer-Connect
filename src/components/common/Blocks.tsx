@@ -71,7 +71,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
           src={member.photo}
           alt={member.name}
           loading="lazy"
-          className="mb-4 size-16 rounded-full object-cover"
+          className="mb-4 size-16 rounded-full object-cover object-top"
         />
       ) : (
         <div className="icon-badge mb-4 flex size-16 items-center justify-center rounded-full text-lg font-semibold text-primary-foreground">
@@ -96,10 +96,48 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
         “{testimonial.quote}”
       </blockquote>
-      <figcaption className="mt-5 border-t border-border pt-4">
-        <p className="text-sm font-semibold text-primary">{testimonial.name}</p>
-        <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+      <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+        {testimonial.photo && (
+          <img
+            src={testimonial.photo}
+            alt={testimonial.name}
+            loading="lazy"
+            className="size-10 rounded-full object-cover object-top"
+          />
+        )}
+        <div>
+          <p className="text-sm font-semibold text-primary">{testimonial.name}</p>
+          <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+        </div>
       </figcaption>
+    </figure>
+  );
+}
+
+/** One testimonial given room to breathe: portrait beside a long-form quote. */
+export function FeaturedTestimonial({ testimonial }: { testimonial: Testimonial }) {
+  return (
+    <figure className="card-elegant grid items-stretch overflow-hidden p-0 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)]">
+      {testimonial.photo && (
+        <img
+          src={testimonial.photo}
+          alt={`${testimonial.name}, ${testimonial.role}`}
+          loading="lazy"
+          className="aspect-[4/5] max-h-[28rem] w-full object-cover object-top md:aspect-auto md:max-h-none md:h-full"
+        />
+      )}
+      <div className="flex flex-col justify-center p-6 sm:p-10">
+        <Quote className="size-8 text-gold" />
+        <blockquote className="mt-5 space-y-4 text-base leading-relaxed text-foreground">
+          {testimonial.quote.split("\n\n").map((para) => (
+            <p key={para}>{para}</p>
+          ))}
+        </blockquote>
+        <figcaption className="mt-7 border-t border-border pt-5">
+          <p className="font-display text-lg text-primary">{testimonial.name}</p>
+          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+        </figcaption>
+      </div>
     </figure>
   );
 }

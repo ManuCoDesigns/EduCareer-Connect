@@ -5,46 +5,76 @@ import { Input } from "@/components/ui/input";
 import { FAQS, MEMBERSHIP_TIERS, MEMBERSHIP_BENEFITS } from "@/lib/content/misc";
 import { PROGRAMS } from "@/lib/content/programs";
 import { ORG } from "@/lib/content/site";
+import { FOUNDER, GODFREY_CHESA } from "@/lib/content/team";
 
 type ChatMessage = { role: "user" | "bot"; text: string };
 
-type KnowledgeEntry = { keywords: string; answer: string };
+/**
+ * `title` is what the entry is about (a question, a program name); `body` is the
+ * supporting text. A query word found in the title counts for more than one
+ * found only in the body, so "can my school partner" lands on the partnership
+ * FAQ rather than any answer that merely mentions schools.
+ */
+type KnowledgeEntry = { title: string; body: string; answer: string };
 
 function buildKnowledgeBase(): KnowledgeEntry[] {
   const entries: KnowledgeEntry[] = [];
+  const add = (title: string, body: string, answer: string) =>
+    entries.push({ title: title.toLowerCase(), body: body.toLowerCase(), answer });
 
-  for (const f of FAQS) {
-    entries.push({ keywords: `${f.question} ${f.answer}`.toLowerCase(), answer: f.answer });
-  }
+  // Order matters: on a tie the earlier entry wins. Broad entries come first so
+  // vague questions ("what is ECCO", "membership", "programs") get the overview.
+  add(
+    "what is ecco about mission vision organization who we are",
+    ORG.description,
+    ORG.description,
+  );
+
+  add(
+    "contact reach email phone call where location office based address",
+    `${ORG.email} ${ORG.phoneDisplay} ${ORG.location}`,
+    `You can reach ${ORG.abbreviation} at ${ORG.email} or ${ORG.phoneDisplay}. Our office is in ${ORG.location}.`,
+  );
+
+  add(
+    "membership benefits members get perks",
+    `${MEMBERSHIP_BENEFITS.join(" ")} join`,
+    `As a member you get: ${MEMBERSHIP_BENEFITS.join("; ")}.`,
+  );
+
+  add(
+    "programs services offer what do you do",
+    PROGRAMS.map((p) => p.title).join(" "),
+    `${ORG.abbreviation} runs ${PROGRAMS.length} programs: ${PROGRAMS.map((p) => p.title).join(", ")}. Ask me about any of them, or see the Programs page.`,
+  );
+
+  add(
+    "team leadership leaders committee executive board runs leads staff people",
+    `${FOUNDER.name} ${GODFREY_CHESA.name} ${GODFREY_CHESA.role}`,
+    `${ORG.abbreviation} was founded by ${FOUNDER.name} and is guided by an Executive Committee, with ${GODFREY_CHESA.name} as ${GODFREY_CHESA.role}. You can meet the team on our Team page.`,
+  );
+
+  add(
+    `${GODFREY_CHESA.name} ${GODFREY_CHESA.role} educator counselor pastor minister soccer coach`,
+    GODFREY_CHESA.shortBio,
+    `${GODFREY_CHESA.name} is ECCO's ${GODFREY_CHESA.role}. ${GODFREY_CHESA.shortBio}`,
+  );
+
+  add(
+    `${FOUNDER.name} founder started founded`,
+    FOUNDER.bio,
+    `${FOUNDER.name} is the founder of ${ORG.abbreviation}. ${FOUNDER.bio}`,
+  );
+
+  for (const f of FAQS) add(f.question, f.answer, f.answer);
 
   for (const p of PROGRAMS) {
-    entries.push({
-      keywords: `${p.title} ${p.summary} ${p.body} ${p.audience}`.toLowerCase(),
-      answer: `${p.title} — ${p.body}`,
-    });
+    add(p.title, `${p.summary} ${p.body} ${p.audience}`, `${p.title} — ${p.body}`);
   }
 
   for (const t of MEMBERSHIP_TIERS) {
-    entries.push({
-      keywords: `${t.name} member membership tier ${t.body}`.toLowerCase(),
-      answer: `${t.name} member — ${t.body}`,
-    });
+    add(`${t.name} member membership tier`, t.body, `${t.name} member — ${t.body}`);
   }
-
-  entries.push({
-    keywords: "membership benefits what do i get if i join perks",
-    answer: `As a member you get: ${MEMBERSHIP_BENEFITS.join("; ")}.`,
-  });
-
-  entries.push({
-    keywords: "contact email phone reach location office where based address",
-    answer: `You can reach ${ORG.abbreviation} at ${ORG.email} or ${ORG.phoneDisplay}. Our office is in ${ORG.location}.`,
-  });
-
-  entries.push({
-    keywords: "what is ecco about mission vision who are you organization",
-    answer: ORG.description,
-  });
 
   return entries;
 }
@@ -77,6 +107,18 @@ const STOPWORDS = new Set([
   "it",
   "this",
   "that",
+  "who",
+  "when",
+  "why",
+  "which",
+  "there",
+  "tell",
+  "please",
+  "know",
+  "have",
+  "has",
+  "our",
+  "any",
 ]);
 
 function answerQuery(query: string, kb: KnowledgeEntry[]): string {
@@ -90,9 +132,19 @@ function answerQuery(query: string, kb: KnowledgeEntry[]): string {
     return "Could you rephrase that? Try asking about membership, our programs, or how to reach us.";
   }
 
+  // A word found in many entries (e.g. "ecco") says little; a rare word says a lot.
+  const weight = (w: string) => {
+    const df = kb.reduce((n, e) => n + ((e.title + " " + e.body).includes(w) ? 1 : 0), 0);
+    return df === 0 ? 0 : Math.log(1 + kb.length / df);
+  };
+
   let best: { entry: KnowledgeEntry; score: number } | null = null;
   for (const entry of kb) {
-    const score = words.reduce((acc, w) => acc + (entry.keywords.includes(w) ? 1 : 0), 0);
+    const score = words.reduce((acc, w) => {
+      if (entry.title.includes(w)) return acc + 3 * weight(w);
+      if (entry.body.includes(w)) return acc + weight(w);
+      return acc;
+    }, 0);
     if (score > 0 && (!best || score > best.score)) {
       best = { entry, score };
     }

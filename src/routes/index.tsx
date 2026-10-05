@@ -5,7 +5,12 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeading, PageContainer } from "@/components/layout/Section";
 import { Reveal } from "@/components/common/Reveal";
-import { StatStrip, CTASection, TestimonialCard } from "@/components/common/Blocks";
+import {
+  StatStrip,
+  CTASection,
+  TestimonialCard,
+  FeaturedTestimonial,
+} from "@/components/common/Blocks";
 import { PROGRAMS, VALUES } from "@/lib/content/programs";
 import { STATS, TESTIMONIALS } from "@/lib/content/misc";
 import { ORG } from "@/lib/content/site";
@@ -22,6 +27,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  // One testimonial gets a featured layout; two or more become a card grid.
+  const featuredTestimonial = TESTIMONIALS.length === 1 ? TESTIMONIALS[0] : undefined;
+
   return (
     <div className="min-h-screen bg-background">
       <script
@@ -189,13 +197,21 @@ function Home() {
 
         <Section>
           <SectionHeading title="What our community says" align="center" />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((t, i) => (
-              <Reveal key={t.name + t.role} delayMs={i * 80}>
-                <TestimonialCard testimonial={t} />
-              </Reveal>
-            ))}
-          </div>
+          {featuredTestimonial ? (
+            <Reveal>
+              <div className="mt-12">
+                <FeaturedTestimonial testimonial={featuredTestimonial} />
+              </div>
+            </Reveal>
+          ) : (
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {TESTIMONIALS.map((t, i) => (
+                <Reveal key={t.name + t.role} delayMs={i * 80}>
+                  <TestimonialCard testimonial={t} />
+                </Reveal>
+              ))}
+            </div>
+          )}
         </Section>
 
         <Section tone="muted">

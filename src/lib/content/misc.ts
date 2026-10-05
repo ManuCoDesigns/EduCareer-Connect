@@ -30,25 +30,28 @@ export type Testimonial = {
   quote: string;
   name: string;
   role: string;
+  /** Portrait shown beside the quote. */
+  photo?: string;
 };
 
+// Real testimonials only. Add more entries as they come in: with one entry the
+// home page shows a featured layout, with two or more it switches to a card grid.
 export const TESTIMONIALS: Testimonial[] = [
   {
-    quote:
-      "Placeholder — replace with a real quote from a learner, parent or teacher once available.",
-    name: "Name pending",
-    role: "Learner, partner school",
-  },
-  {
-    quote:
-      "Placeholder — replace with a real quote describing how a guidance session helped someone choose a pathway.",
-    name: "Name pending",
-    role: "Parent",
-  },
-  {
-    quote: "Placeholder — replace with a real quote from a teacher or school administrator.",
-    name: "Name pending",
-    role: "Teacher",
+    quote: `For years as a teacher, I have seen the same pain. A learner passes well, leaves school, then comes back asking, "Mwalimu, what next?"
+
+We prepare them for exams, but not always for life after exams. There is a gap between the classroom and career.
+
+That is why I connect with the vision of EduCareer Connect Organization (ECCO) founded by Victoria Wakoli in Wote, Makueni.
+
+ECCO is closing that gap by offering career guidance, counselling and mentorship aligned with CBE. We walk with the learner, the parent and the teacher so that career choices are based on competence and purpose, not confusion.
+
+Young people don't lack potential, they lack direction. When you give them clarity, you transform their future.
+
+Let's close the gap together.`,
+    name: "Augustine Ngovi",
+    role: "Educator | Youth Mentor",
+    photo: "/images/augustine-ngovi.jpg",
   },
 ];
 
