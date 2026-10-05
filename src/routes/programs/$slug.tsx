@@ -7,25 +7,36 @@ import { PROGRAMS } from "@/lib/content/programs";
 import { ORG } from "@/lib/content/site";
 import { pageMeta } from "@/lib/seo";
 
+function findProgram(slug: string) {
+  return PROGRAMS.find((p) => p.slug === slug);
+}
+
 export const Route = createFileRoute("/programs/$slug")({
   loader: ({ params }) => {
-    const program = PROGRAMS.find((p) => p.slug === params.slug);
+    const program = findProgram(params.slug);
     if (!program) throw notFound();
-    return program;
+    // Return only serializable data. A program's `icon` is a React component, which
+    // can't be sent from the server to the browser (the patched TanStack Start
+    // rejects it), so the page looks the program up itself from this slug.
+    return { slug: program.slug };
   },
-  head: ({ loaderData }) =>
-    loaderData
+  head: ({ loaderData }) => {
+    const program = loaderData ? findProgram(loaderData.slug) : undefined;
+    return program
       ? pageMeta({
-          title: loaderData.title,
-          description: loaderData.summary,
-          path: `/programs/${loaderData.slug}`,
+          title: program.title,
+          description: program.summary,
+          path: `/programs/${program.slug}`,
         })
-      : {},
+      : {};
+  },
   component: ProgramDetailPage,
 });
 
 function ProgramDetailPage() {
-  const program = Route.useLoaderData();
+  const { slug } = Route.useLoaderData();
+  const program = findProgram(slug);
+  if (!program) return null;
   const others = PROGRAMS.filter((p) => p.slug !== program.slug).slice(0, 3);
 
   return (
