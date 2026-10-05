@@ -39,14 +39,14 @@ export const GODFREY_CHESA: TeamProfile = {
   role: "Secretary",
   photo: "/images/godfrey-chesa-avatar.jpg",
   portrait: "/images/godfrey-chesa.jpg",
-  credentials: "B.Ed (Arts), Geography / Business Studies — University of Eldoret",
+  credentials: "B.Ed Arts (Geography / Business Studies), University of Eldoret",
   paragraphs: [
     "Godfrey Chesa is a dedicated Kenyan educator, counselor, youth mentor, and minister of the Gospel, born in Kakamega, Kenya.",
-    "He is a trained teacher by profession, holding a Bachelor's Degree in Education Arts (Geography / Business Studies) from the University of Eldoret. Since beginning his teaching career in 2019, he has served with distinction in diverse academic environments, including Kivaywa Boys High School (Kakamega), Kabuyefwe Girls High School (Trans-Nzoia), and The Makueni School (Makueni).",
-    "Beyond the classroom, Mr. Chesa is a passionate advocate for holistic student development. He has served in the Guidance and Counseling Department and as a School Spiritual Leader, Christian Union (C.U.) Patron, and School Pastor in all institutions he has served. This experience has equipped him with exceptional skills in handling a multicultural population across different genders, cultures, and geographical locations. He is also an active soccer coach, using sports as a tool for discipline, teamwork, and talent development.",
-    "In ministry and mentorship, his impact extends far beyond the high school. Through his yearly mentorship programs focusing on Academic Shaping, Career Guidance, Spiritual Mentorship, and Social Counseling, he has directly influenced and transformed the lives of over 4,000 youth.",
-    "His university outreach has reached more than 10 Universities and Tertiary Institutions across Kenya, including the University of Eldoret, University of Nairobi, Kenyatta University, Maseno University, Makueni University (formerly SEKU Makueni Branch), Pwani University, Masinde Muliro University of Science and Technology, Moi University, Koilel Campus, as well as Wote KMTC, Wote Technical Training Institute, and Sigalagala National Polytechnic.",
-    "Furthermore, he has reached out to over 200 churches across the nation in youth mobilization, mentorship, and spiritual transformation.",
+    "He is a trained teacher by profession, holding a **Bachelor’s Degree in Education Arts (Geography / Business Studies)** from the **University of Eldoret**. Since beginning his teaching career in 2019, he has served with distinction in diverse academic environments, including **Kivaywa Boys High School (Kakamega), Kabuyefwe Girls High School (Trans-Nzoia), and The Makueni School (Makueni).**",
+    "Beyond the classroom, Mr. Chesa is a passionate advocate for holistic student development. He has served in the **Guidance and Counseling Department** and as a **School Spiritual Leader, Christian Union (C.U.) Patron, and School Pastor** in all institutions he has served. This experience has equipped him with exceptional skills in handling a multicultural population across different genders, cultures, and geographical locations. He is also an active **soccer coach**, using sports as a tool for discipline, teamwork, and talent development.",
+    "In ministry and mentorship, his impact extends far beyond the high school. Through his yearly mentorship programs focusing on **Academic Shaping, Career Guidance, Spiritual Mentorship, and Social Counseling**, he has directly influenced and transformed the lives of **over 4,000 youth**.",
+    "His university outreach has reached **more than 10 Universities and Tertiary Institutions across Kenya**, including the University of Eldoret, University of Nairobi, Kenyatta University, Maseno University, Makueni University (formerly SEKU Makueni Branch), Pwani University, Masinde Muliro University of Science and Technology, Moi University, Koilel Campus, as well as Wote KMTC, Wote Technical Training Institute, and Sigalagala National Polytechnic.",
+    "Furthermore, he has reached out to **over 200 churches** across the nation in youth mobilization, mentorship, and spiritual transformation.",
     "Mr. Chesa is a transformational leader who believes in nurturing the academic, spiritual, and social well-being of the next generation.",
   ],
   shortBio:
@@ -67,8 +67,8 @@ export const GODFREY_CHESA: TeamProfile = {
     "Sports Coaching",
   ],
   ministryRoles: [
-    "Praise and Worship Leader — Full Gospel Churches of Kenya, Kakamega East District",
-    "Youth Pastor — JCC Church Wote",
+    "Praise and Worship Leader (Full Gospel Churches of Kenya, Kakamega East District)",
+    "Youth Pastor (JCC Church Wote)",
   ],
 };
 

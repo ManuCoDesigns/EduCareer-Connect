@@ -154,7 +154,12 @@ export function BlogCard({ post }: { post: BlogPost }) {
       params={{ slug: post.slug }}
       className="card-elegant group flex flex-col p-6"
     >
-      <p className="text-xs font-medium text-primary">{post.category}</p>
+      <p className="text-xs font-medium text-primary">
+        {post.category}
+        {post.author && (
+          <span className="font-normal text-muted-foreground"> · By {post.author.name}</span>
+        )}
+      </p>
       <h3 className="mt-3 text-xl leading-snug group-hover:text-primary">{post.title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
       <div className="mt-5 flex items-center justify-between text-xs text-muted-foreground">

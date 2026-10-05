@@ -1,3 +1,5 @@
+import { GODFREY_CHESA } from "@/lib/content/team";
+
 export type GalleryItem = {
   url: string;
   alt: string;
@@ -76,9 +78,74 @@ export type BlogPost = {
   date: string;
   readMinutes: number;
   category: string;
+  /** Shown as a byline (with photo, if given) on the post and its card. */
+  author?: { name: string; role: string; photo?: string };
+  /** Optional picture shown at the top of the post. */
+  image?: { src: string; alt: string };
 };
 
+const GODFREY_SECTION_HEADINGS: Record<number, string> = {
+  1: "Education and teaching career",
+  2: "Beyond the classroom",
+  3: "Mentorship and outreach",
+};
+
+/**
+ * The Secretary's biography as a blog post. Built from the same source as the
+ * Team page, so editing his bio in team.ts updates both places.
+ */
+function godfreyProfileBody(): string {
+  const story = GODFREY_CHESA.paragraphs.map((paragraph, i) => {
+    const heading = GODFREY_SECTION_HEADINGS[i];
+    return heading ? `## ${heading}\n\n${paragraph}` : paragraph;
+  });
+  return [
+    ...story,
+    `**Core Competencies:** ${GODFREY_CHESA.competencies.join(" | ")}.`,
+    `**Ministry Roles:** ${GODFREY_CHESA.ministryRoles.join(" | ")}`,
+  ].join("\n\n");
+}
+
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "young-people-lack-direction-not-potential",
+    title: "Young people don't lack potential, they lack direction",
+    excerpt:
+      "Young people don't lack potential, they lack direction. When you give them clarity, you transform their future.",
+    body: `For years as a teacher, I have seen the same pain. A learner passes well, leaves school, then comes back asking, "Mwalimu, what next?"
+
+We prepare them for exams, but not always for life after exams. There is a gap between the classroom and career.
+
+That is why I connect with the vision of EduCareer Connect Organization (ECCO) founded by Victoria Wakoli in Wote, Makueni.
+
+ECCO is closing that gap by offering career guidance, counselling and mentorship aligned with CBE. We walk with the learner, the parent and the teacher so that career choices are based on competence and purpose, not confusion.
+
+Young people don't lack potential, they lack direction. When you give them clarity, you transform their future.
+
+Let's close the gap together.`,
+    date: "2026-10-06",
+    readMinutes: 1,
+    category: "Educator voices",
+    author: {
+      name: "Augustine Ngovi",
+      role: "Educator | Youth Mentor",
+      photo: "/images/augustine-ngovi.jpg",
+    },
+  },
+  {
+    slug: "meet-godfrey-chesa-ecco-secretary",
+    title: "Meet Godfrey Chesa, ECCO's Secretary",
+    excerpt:
+      "Educator, counselor, youth mentor and minister of the Gospel, Godfrey Chesa has mentored over 4,000 youth and reached more than 10 universities and tertiary institutions across Kenya.",
+    body: godfreyProfileBody(),
+    date: "2026-10-06",
+    readMinutes: 3,
+    category: "Our team",
+    image: {
+      src: GODFREY_CHESA.portrait,
+      alt: `${GODFREY_CHESA.name}, ${GODFREY_CHESA.role} of EduCareer Connect Organization`,
+    },
+  },
   {
     slug: "understanding-cbc-pathways",
     title: "Understanding the three CBE pathways",

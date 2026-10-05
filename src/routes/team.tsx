@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Breadcrumb, PageHero, Section, SectionHeading } from "@/components/layout/Section";
 import { Reveal } from "@/components/common/Reveal";
+import { RichText } from "@/components/common/RichText";
 import { StatStrip, TeamCard } from "@/components/common/Blocks";
 import { FOUNDER, GODFREY_CHESA, GOVERNANCE, GOVERNANCE_NOTE } from "@/lib/content/team";
 import { ORG } from "@/lib/content/site";
@@ -62,7 +63,9 @@ function TeamPage() {
             </p>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               {GODFREY_CHESA.paragraphs.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+                  <RichText text={p} />
+                </p>
               ))}
             </div>
           </Reveal>

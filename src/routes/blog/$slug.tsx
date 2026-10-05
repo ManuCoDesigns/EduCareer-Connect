@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Breadcrumb, Section } from "@/components/layout/Section";
+import { RichText } from "@/components/common/RichText";
 import { BLOG_POSTS } from "@/lib/content/gallery-blog";
 import { pageMeta } from "@/lib/seo";
 
@@ -48,6 +49,28 @@ function BlogPostPage() {
           <p className="mt-3 text-sm text-muted-foreground">
             {date} · {post.readMinutes} min read
           </p>
+          {post.author && (
+            <div className="mt-5 flex items-center gap-3">
+              {post.author.photo && (
+                <img
+                  src={post.author.photo}
+                  alt={post.author.name}
+                  className="size-11 rounded-full object-cover object-top"
+                />
+              )}
+              <div>
+                <p className="text-sm font-semibold text-primary">{post.author.name}</p>
+                <p className="text-xs text-muted-foreground">{post.author.role}</p>
+              </div>
+            </div>
+          )}
+          {post.image && (
+            <img
+              src={post.image.src}
+              alt={post.image.alt}
+              className="mt-8 aspect-[4/5] w-full max-w-sm rounded-2xl border border-border object-cover object-top"
+            />
+          )}
           <div className="mt-8 space-y-4 text-base leading-relaxed text-foreground">
             {post.body.split("\n\n").map((block) => {
               const heading = block.match(/^## (.+)$/);
@@ -58,7 +81,11 @@ function BlogPostPage() {
                   </h2>
                 );
               }
-              return <p key={block}>{block}</p>;
+              return (
+                <p key={block}>
+                  <RichText text={block} />
+                </p>
+              );
             })}
           </div>
           <Link
