@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FAQS, MEMBERSHIP_TIERS, MEMBERSHIP_BENEFITS } from "@/lib/content/misc";
 import { PROGRAMS } from "@/lib/content/programs";
+import { PRESS } from "@/lib/content/press";
 import { ORG } from "@/lib/content/site";
 import { FOUNDER, GODFREY_CHESA } from "@/lib/content/team";
 
@@ -65,6 +66,15 @@ function buildKnowledgeBase(): KnowledgeEntry[] {
     FOUNDER.bio,
     `${FOUNDER.name} is the founder of ${ORG.abbreviation}. ${FOUNDER.bio}`,
   );
+
+  const press = PRESS[0];
+  if (press) {
+    add(
+      "press media news featured coverage article interview journalist vvob stem newspaper",
+      `${press.headline} ${press.outlet} ${FOUNDER.name}`,
+      `${FOUNDER.name} was featured by ${press.outlet} in "${press.headline}" (${press.publication}). Read the summary and original link on our In the press page.`,
+    );
+  }
 
   for (const f of FAQS) add(f.question, f.answer, f.answer);
 

@@ -28,6 +28,7 @@ export const FOOTER_LINKS = [
   { label: "Team", href: "/team" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
+  { label: "In the press", href: "/press" },
   { label: "Membership", href: "/membership" },
   { label: "Contact", href: "/contact" },
 ];

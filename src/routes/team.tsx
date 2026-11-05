@@ -1,11 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Breadcrumb, PageHero, Section, SectionHeading } from "@/components/layout/Section";
 import { Reveal } from "@/components/common/Reveal";
 import { RichText } from "@/components/common/RichText";
 import { StatStrip, TeamCard } from "@/components/common/Blocks";
-import { FOUNDER, GODFREY_CHESA, GOVERNANCE, GOVERNANCE_NOTE } from "@/lib/content/team";
+import {
+  FOUNDER,
+  FOUNDER_HIGHLIGHTS,
+  GODFREY_CHESA,
+  GOVERNANCE,
+  GOVERNANCE_NOTE,
+} from "@/lib/content/team";
 import { ORG } from "@/lib/content/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -44,6 +50,22 @@ function TeamPage() {
             <p className="text-xs font-medium text-primary">{FOUNDER.role}</p>
             <h2 className="mt-2 text-3xl">{FOUNDER.name}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {FOUNDER_HIGHLIGHTS.map((h) => (
+                <li
+                  key={h}
+                  className="rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs text-foreground"
+                >
+                  {h}
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/press"
+              className="mt-4 inline-block text-sm font-medium text-primary hover:underline"
+            >
+              Read the feature in the press →
+            </Link>
             {FOUNDER.quote && (
               <blockquote className="mt-6 border-l-2 border-gold pl-4 text-sm italic leading-relaxed text-foreground">
                 “{FOUNDER.quote}”

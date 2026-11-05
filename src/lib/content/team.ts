@@ -8,6 +8,15 @@ export type TeamMember = {
   quote?: string;
 };
 
+/** Founder highlights, paraphrased from VVOB in Kenya coverage (2025). Verify they are still current. */
+export const FOUNDER_HIGHLIGHTS: string[] = [
+  "Teaches mathematics and integrated science at Makueni School",
+  "Advocate for girls in STEM",
+  "Patron of the Red Cross and St. John Ambulance societies",
+  "Started journalism and mental health clubs",
+  "Featured in VVOB's The Learning Leader, 2025",
+];
+
 export const FOUNDER: TeamMember = {
   name: "Victoria Wakoli",
   role: "Founder",

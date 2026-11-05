@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -14,6 +14,7 @@ import {
 import { PROGRAMS, VALUES } from "@/lib/content/programs";
 import { STATS, TESTIMONIALS } from "@/lib/content/misc";
 import { ORG } from "@/lib/content/site";
+import { PRESS } from "@/lib/content/press";
 import { pageMeta, organizationSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -214,7 +215,35 @@ function Home() {
           )}
         </Section>
 
-        <Section tone="muted">
+        {PRESS[0] && (
+          <Section tone="muted">
+            <Reveal>
+              <Link
+                to="/press"
+                className="card-elegant group grid items-center gap-6 p-6 sm:p-8 md:grid-cols-[auto_1fr_auto]"
+              >
+                <span className="icon-badge">
+                  <Newspaper className="size-5" />
+                </span>
+                <div>
+                  <p className="text-xs font-medium text-primary">
+                    As featured by {PRESS[0].outlet}
+                  </p>
+                  <h3 className="mt-1 text-xl">{PRESS[0].headline}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    How our founder is opening doors for girls in science and mathematics.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  Read more
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </Reveal>
+          </Section>
+        )}
+
+        <Section>
           <CTASection
             title="Ready to guide your next step?"
             lede="Join ECCO as a member, or reach out to bring career guidance to your school."

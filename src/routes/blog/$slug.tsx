@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Breadcrumb, Section } from "@/components/layout/Section";
+import { ShareButtons } from "@/components/common/ShareButtons";
 import { RichText } from "@/components/common/RichText";
 import { BLOG_POSTS } from "@/lib/content/gallery-blog";
 import { pageMeta } from "@/lib/seo";
@@ -88,9 +89,12 @@ function BlogPostPage() {
               );
             })}
           </div>
+          <div className="mt-10 border-t border-border pt-6">
+            <ShareButtons path={`/blog/${post.slug}`} title={post.title} />
+          </div>
           <Link
             to="/blog"
-            className="mt-10 inline-block text-sm font-medium text-primary hover:underline"
+            className="mt-6 inline-block text-sm font-medium text-primary hover:underline"
           >
             ← Back to all articles
           </Link>
