@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 const emailSchema = z.string().trim().min(5).max(255).email();
 
 /** Compact signup for the dark footer. Duplicate emails are treated as success so addresses aren't revealed. */
-export function NewsletterForm() {
+export function NewsletterForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -37,7 +37,9 @@ export function NewsletterForm() {
 
   if (done) {
     return (
-      <p className="mt-4 flex items-center gap-2 text-sm text-gold">
+      <p
+        className={`mt-4 flex items-center gap-2 text-sm ${tone === "dark" ? "text-gold" : "text-primary"}`}
+      >
         <Check className="size-4" /> You're on the list. Thank you!
       </p>
     );
@@ -56,9 +58,13 @@ export function NewsletterForm() {
         onChange={(e) => setEmail(e.target.value)}
         maxLength={255}
         required
-        className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/50"
+        className={
+          tone === "dark"
+            ? "border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/50"
+            : ""
+        }
       />
-      <Button type="submit" variant="secondary" disabled={loading}>
+      <Button type="submit" variant={tone === "dark" ? "secondary" : "default"} disabled={loading}>
         {loading ? <Loader2 className="animate-spin" /> : "Join"}
       </Button>
     </form>

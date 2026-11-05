@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,7 @@ export function CTASection({
   secondaryLabel?: string;
   secondaryHref?: string;
 }) {
+  const t = useT();
   return (
     <div className="hero-surface pattern-topo relative overflow-hidden rounded-2xl p-8 sm:p-12">
       <div
@@ -39,11 +41,11 @@ export function CTASection({
         aria-hidden="true"
       />
       <div className="relative max-w-xl">
-        <h2 className="text-3xl sm:text-4xl">{title}</h2>
-        <p className="mt-3 text-primary-foreground/80">{lede}</p>
+        <h2 className="text-3xl sm:text-4xl">{t(title)}</h2>
+        <p className="mt-3 text-primary-foreground/80">{t(lede)}</p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button asChild size="lg" variant="secondary">
-            <Link to={primaryHref}>{primaryLabel}</Link>
+            <Link to={primaryHref}>{t(primaryLabel)}</Link>
           </Button>
           {secondaryLabel && secondaryHref && (
             <Button
@@ -53,7 +55,7 @@ export function CTASection({
               className="border-gold/60 bg-transparent text-gold hover:bg-gold hover:text-gold-foreground"
             >
               <Link to={secondaryHref}>
-                {secondaryLabel} <ArrowRight className="size-4" />
+                {t(secondaryLabel)} <ArrowRight className="size-4" />
               </Link>
             </Button>
           )}

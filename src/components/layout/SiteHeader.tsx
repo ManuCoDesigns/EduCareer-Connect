@@ -4,26 +4,29 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { NAV, ORG } from "@/lib/content/site";
+import { LanguageToggle } from "@/components/layout/LanguageToggle";
+import { useT } from "@/lib/i18n";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const t = useT();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex shrink-0 items-center gap-3">
           <img
             src="/images/logo.png"
             alt={`${ORG.name} logo`}
-            className="h-11 w-11 object-contain"
+            className="h-11 w-11 shrink-0 object-contain"
           />
           <span className="hidden text-lg font-semibold leading-tight lg:block">
             EduCareer <span className="text-primary">Connect</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-4 md:flex lg:gap-6">
+        <nav className="hidden items-center gap-3 md:flex lg:gap-6">
           {NAV.map((n) => {
             const active = pathname === n.href;
             return (
@@ -35,15 +38,16 @@ export function SiteHeader() {
                   active ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                {n.label}
+                {t(n.label)}
               </Link>
             );
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <LanguageToggle />
           <Button asChild size="sm">
-            <Link to="/membership">Join ECCO</Link>
+            <Link to="/membership">{t("Join ECCO")}</Link>
           </Button>
         </div>
 
@@ -63,14 +67,15 @@ export function SiteHeader() {
                       pathname === n.href ? "text-primary" : "text-foreground"
                     }`}
                   >
-                    {n.label}
+                    {t(n.label)}
                   </Link>
                 </SheetClose>
               ))}
             </nav>
+            <LanguageToggle className="mt-6" />
             <SheetClose asChild>
-              <Button asChild size="lg" className="mt-6 w-full">
-                <Link to="/membership">Join ECCO</Link>
+              <Button asChild size="lg" className="mt-4 w-full">
+                <Link to="/membership">{t("Join ECCO")}</Link>
               </Button>
             </SheetClose>
           </SheetContent>

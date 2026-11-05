@@ -50,7 +50,7 @@ function BookPage() {
           <ol className="space-y-6">
             {STEPS.map(({ Icon, title, text }, i) => (
               <li key={title} className="flex gap-4">
-                <span className="icon-badge shrink-0">
+                <span className="icon-badge inline-flex size-11 shrink-0 items-center justify-center rounded-lg text-primary-foreground">
                   <Icon className="size-5" />
                 </span>
                 <div>

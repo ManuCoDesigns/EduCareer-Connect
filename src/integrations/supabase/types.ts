@@ -8,6 +8,60 @@ export type Database = {
   };
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      donations: {
+        Row: {
+          amount: number;
+          anonymous: boolean;
+          created_at: string;
+          donor_name: string;
+          email: string | null;
+          id: string;
+          mpesa_code: string;
+          phone: string;
+          purpose: string;
+          status: string;
+        };
+        Insert: {
+          amount: number;
+          anonymous?: boolean;
+          created_at?: string;
+          donor_name: string;
+          email?: string | null;
+          id?: string;
+          mpesa_code: string;
+          phone: string;
+          purpose: string;
+          status?: string;
+        };
+        Update: {
+          amount?: number;
+          anonymous?: boolean;
+          created_at?: string;
+          donor_name?: string;
+          email?: string | null;
+          id?: string;
+          mpesa_code?: string;
+          phone?: string;
+          purpose?: string;
+          status?: string;
+        };
+        Relationships: [];
+      };
       contact_messages: {
         Row: {
           created_at: string;
@@ -142,7 +196,10 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      is_admin: {
+        Args: Record<PropertyKey, never>;
+        Returns: boolean;
+      };
     };
     Enums: {
       [_ in never]: never;

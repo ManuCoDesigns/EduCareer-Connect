@@ -29,8 +29,11 @@ export const FOOTER_LINKS = [
   { label: "Book a session", href: "/book" },
   { label: "Team", href: "/team" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Events", href: "/events" },
+  { label: "Resources", href: "/resources" },
   { label: "Blog", href: "/blog" },
   { label: "In the press", href: "/press" },
+  { label: "Donate", href: "/donate" },
   { label: "Membership", href: "/membership" },
   { label: "Contact", href: "/contact" },
 ];

@@ -13,6 +13,7 @@ import {
 import { toast } from "sonner";
 import { FOOTER_LINKS, SOCIAL_LINKS, ORG } from "@/lib/content/site";
 import type { SocialLink } from "@/lib/content/site";
+import { useT } from "@/lib/i18n";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
 
 const SOCIAL_ICONS: Record<string, typeof Facebook> = {
@@ -58,6 +59,7 @@ function SocialIcon({ link }: { link: SocialLink }) {
 }
 
 export function SiteFooter() {
+  const t = useT();
   return (
     <footer className="hero-surface">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
@@ -67,8 +69,8 @@ export function SiteFooter() {
             <span className="text-lg font-semibold">EduCareer Connect</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/75">
-            {ORG.tagline}. A non-profit, non-political and non-religious organization serving every
-            learner.
+            {t(ORG.tagline)}.{" "}
+            {t("A non-profit, non-political and non-religious organization serving every learner.")}
           </p>
           <div className="mt-5 flex gap-2.5">
             {SOCIAL_LINKS.map((link) => (
@@ -76,14 +78,14 @@ export function SiteFooter() {
             ))}
           </div>
           <p className="mt-6 text-xs font-medium uppercase tracking-wide text-primary-foreground/60">
-            Get updates
+            {t("Get updates")}
           </p>
           <NewsletterForm />
         </div>
 
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-primary-foreground/60">
-            Explore
+            {t("Explore")}
           </p>
           <ul className="mt-4 space-y-2.5">
             {FOOTER_LINKS.map((l) => (
@@ -92,7 +94,7 @@ export function SiteFooter() {
                   to={l.href}
                   className="text-sm text-primary-foreground/80 transition-colors hover:text-gold"
                 >
-                  {l.label}
+                  {t(l.label)}
                 </Link>
               </li>
             ))}
@@ -101,7 +103,7 @@ export function SiteFooter() {
 
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-primary-foreground/60">
-            Reach us
+            {t("Reach us")}
           </p>
           <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
             <li className="flex items-start gap-2.5">
@@ -125,8 +127,8 @@ export function SiteFooter() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-primary-foreground/55">
-          © {new Date().getFullYear()} EduCareer Connect Organization. Non-profit, non-political,
-          non-religious.
+          © {new Date().getFullYear()} EduCareer Connect Organization.{" "}
+          {t("Non-profit, non-political, non-religious.")}
         </div>
       </div>
     </footer>

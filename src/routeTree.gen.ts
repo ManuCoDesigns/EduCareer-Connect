@@ -11,11 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as MembershipRouteImport } from './routes/membership'
 import { Route as PressRouteImport } from './routes/press'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
@@ -32,6 +36,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
@@ -40,6 +49,16 @@ const BookRoute = BookRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -55,6 +74,11 @@ const MembershipRoute = MembershipRouteImport.update({
 const PressRoute = PressRouteImport.update({
   id: '/press',
   path: '/press',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TeamRoute = TeamRouteImport.update({
@@ -86,11 +110,15 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/membership': typeof MembershipRoute
   '/press': typeof PressRoute
+  '/resources': typeof ResourcesRoute
   '/team': typeof TeamRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/programs/$slug': typeof ProgramsSlugRoute
@@ -100,11 +128,15 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/membership': typeof MembershipRoute
   '/press': typeof PressRoute
+  '/resources': typeof ResourcesRoute
   '/team': typeof TeamRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/programs/$slug': typeof ProgramsSlugRoute
@@ -115,11 +147,15 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/membership': typeof MembershipRoute
   '/press': typeof PressRoute
+  '/resources': typeof ResourcesRoute
   '/team': typeof TeamRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/programs/$slug': typeof ProgramsSlugRoute
@@ -131,11 +167,15 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/book'
     | '/contact'
+    | '/donate'
+    | '/events'
     | '/gallery'
     | '/membership'
     | '/press'
+    | '/resources'
     | '/team'
     | '/blog/$slug'
     | '/programs/$slug'
@@ -145,11 +185,15 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/book'
     | '/contact'
+    | '/donate'
+    | '/events'
     | '/gallery'
     | '/membership'
     | '/press'
+    | '/resources'
     | '/team'
     | '/blog/$slug'
     | '/programs/$slug'
@@ -159,11 +203,15 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/book'
     | '/contact'
+    | '/donate'
+    | '/events'
     | '/gallery'
     | '/membership'
     | '/press'
+    | '/resources'
     | '/team'
     | '/blog/$slug'
     | '/programs/$slug'
@@ -174,11 +222,15 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
   MembershipRoute: typeof MembershipRoute
   PressRoute: typeof PressRoute
+  ResourcesRoute: typeof ResourcesRoute
   TeamRoute: typeof TeamRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
@@ -202,6 +254,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book': {
       id: '/book'
       path: '/book'
@@ -214,6 +273,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -235,6 +308,13 @@ declare module '@tanstack/react-router' {
       path: '/press'
       fullPath: '/press'
       preLoaderRoute: typeof PressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/team': {
@@ -278,11 +358,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
   MembershipRoute: MembershipRoute,
   PressRoute: PressRoute,
+  ResourcesRoute: ResourcesRoute,
   TeamRoute: TeamRoute,
   BlogSlugRoute: BlogSlugRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,

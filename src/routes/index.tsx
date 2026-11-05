@@ -1,5 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles, ArrowRight, Newspaper } from "lucide-react";
+import {
+  Sparkles,
+  ArrowRight,
+  Newspaper,
+  CalendarCheck,
+  CalendarDays,
+  Download,
+  HeartHandshake,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -15,6 +23,7 @@ import { PROGRAMS, VALUES } from "@/lib/content/programs";
 import { STATS, TESTIMONIALS } from "@/lib/content/misc";
 import { ORG } from "@/lib/content/site";
 import { PRESS } from "@/lib/content/press";
+import { useT } from "@/lib/i18n";
 import { pageMeta, organizationSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -28,6 +37,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const t = useT();
   // One testimonial gets a featured layout; two or more become a card grid.
   const featuredTestimonial = TESTIMONIALS.length === 1 ? TESTIMONIALS[0] : undefined;
 
@@ -60,22 +70,22 @@ function Home() {
                 className="reveal-on-load mt-5 text-4xl leading-[1.08] sm:text-6xl"
                 style={{ animationDelay: "80ms" }}
               >
-                Guiding competence,
+                {t("Guiding competence,")}
                 <br />
-                shaping futures.
+                {t("shaping futures.")}
               </h1>
               <p
                 className="reveal-on-load mt-6 max-w-lg text-base leading-relaxed text-primary-foreground/85"
                 style={{ animationDelay: "160ms" }}
               >
-                {ORG.description}
+                {t(ORG.description)}
               </p>
               <div
                 className="reveal-on-load mt-9 flex flex-wrap gap-3"
                 style={{ animationDelay: "240ms" }}
               >
                 <Button asChild size="lg" variant="secondary">
-                  <Link to="/membership">Become a member</Link>
+                  <Link to="/membership">{t("Become a member")}</Link>
                 </Button>
                 <Button
                   asChild
@@ -84,7 +94,7 @@ function Home() {
                   className="border-gold/60 bg-transparent text-gold hover:bg-gold hover:text-gold-foreground"
                 >
                   <Link to="/programs">
-                    Explore programs <ArrowRight className="size-4" />
+                    {t("Explore programs")} <ArrowRight className="size-4" />
                   </Link>
                 </Button>
               </div>
@@ -144,7 +154,7 @@ function Home() {
                 to="/about"
                 className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
               >
-                Read our full story <ArrowRight className="size-4" />
+                {t("Read our full story")} <ArrowRight className="size-4" />
               </Link>
             </div>
 
@@ -164,8 +174,8 @@ function Home() {
                 },
               ].map((i) => (
                 <div key={i.k} className="pathway-node relative pl-0 lg:pl-1">
-                  <h3 className="text-lg text-primary">{i.k}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{i.v}</p>
+                  <h3 className="text-lg text-primary">{t(i.k)}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{t(i.v)}</p>
                 </div>
               ))}
             </div>
@@ -215,6 +225,52 @@ function Home() {
           )}
         </Section>
 
+        <Section>
+          <SectionHeading
+            title="Ways to get involved"
+            lede="From booking a session to sponsoring a learner, there is a place for you."
+            align="center"
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                to: "/book",
+                Icon: CalendarCheck,
+                k: "Book a session",
+                v: "Request one-to-one or group guidance.",
+              },
+              {
+                to: "/events",
+                Icon: CalendarDays,
+                k: "Events",
+                v: "Workshops, career days and meetings.",
+              },
+              {
+                to: "/resources",
+                Icon: Download,
+                k: "Resources",
+                v: "Free guides and worksheets.",
+              },
+              {
+                to: "/donate",
+                Icon: HeartHandshake,
+                k: "Donate",
+                v: "Sponsor guidance, career days and mentorship.",
+              },
+            ].map(({ to, Icon, k, v }, i) => (
+              <Reveal key={to} delayMs={i * 70}>
+                <Link to={to} className="card-elegant group block h-full p-6">
+                  <span className="icon-badge inline-flex size-11 items-center justify-center rounded-lg text-primary-foreground">
+                    <Icon className="size-5" />
+                  </span>
+                  <h3 className="mt-4 text-lg group-hover:text-primary">{t(k)}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{t(v)}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
         {PRESS[0] && (
           <Section tone="muted">
             <Reveal>
@@ -222,7 +278,7 @@ function Home() {
                 to="/press"
                 className="card-elegant group grid items-center gap-6 p-6 sm:p-8 md:grid-cols-[auto_1fr_auto]"
               >
-                <span className="icon-badge">
+                <span className="icon-badge inline-flex size-11 items-center justify-center rounded-lg text-primary-foreground">
                   <Newspaper className="size-5" />
                 </span>
                 <div>

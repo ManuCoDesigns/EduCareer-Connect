@@ -73,6 +73,30 @@ function buildKnowledgeBase(): KnowledgeEntry[] {
     "You can request a guidance or counselling session on our Book a session page. Tell us who it is for and what you need, and we'll confirm a time by phone, WhatsApp or email.",
   );
 
+  add(
+    "events workshop career day agm annual general meeting upcoming calendar",
+    "events workshops career days annual general meeting",
+    "We run workshops, school career days and an Annual General Meeting for members. See what's coming up on our Events page, or subscribe to our newsletter to be told first.",
+  );
+
+  add(
+    "donate donation give support sponsor fund contribute gift",
+    "donate sponsor support give money mpesa",
+    "You can support ECCO by sponsoring guidance sessions, school career days, learning resources or mentorship. Visit our Donate page for the M-Pesa details and to record your gift.",
+  );
+
+  add(
+    "resources download guide worksheet checklist pdf free printable",
+    "free downloadable guides worksheets pathways checklist",
+    "Our Resources page has free downloads: a guide to the three CBE pathways, a first guidance session checklist and a pathway reflection worksheet.",
+  );
+
+  add(
+    "swahili kiswahili language translate",
+    "swahili kiswahili language switch",
+    "Use the EN | SW switch at the top of the page to read the site's menus and main headings in Kiswahili.",
+  );
+
   const press = PRESS[0];
   if (press) {
     add(

@@ -5,6 +5,8 @@ type PageMetaInput = {
   description: string;
   path: string;
   image?: string;
+  /** Keeps private pages (admin) out of search results. */
+  noindex?: boolean;
 };
 
 /**
@@ -13,7 +15,7 @@ type PageMetaInput = {
  * Every route should call this with a unique title/description — that's
  * what makes multi-page SEO actually work, versus one shared title.
  */
-export function pageMeta({ title, description, path, image }: PageMetaInput) {
+export function pageMeta({ title, description, path, image, noindex }: PageMetaInput) {
   const ogImage = image ?? `${ORG.siteUrl}/images/og-image.png`;
   const fullTitle = title === ORG.name ? title : `${title} | ${ORG.shortName}`;
   const url = `${ORG.siteUrl}${path}`;
@@ -29,6 +31,7 @@ export function pageMeta({ title, description, path, image }: PageMetaInput) {
     { name: "twitter:description", content: description },
   ];
 
+  if (noindex) meta.push({ name: "robots", content: "noindex, nofollow" });
   meta.push({ property: "og:image", content: ogImage });
   meta.push({ name: "twitter:image", content: ogImage });
 
