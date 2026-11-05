@@ -67,6 +67,12 @@ function buildKnowledgeBase(): KnowledgeEntry[] {
     `${FOUNDER.name} is the founder of ${ORG.abbreviation}. ${FOUNDER.bio}`,
   );
 
+  add(
+    "book booking appointment session schedule guidance counselling meet request",
+    "book a guidance session appointment",
+    "You can request a guidance or counselling session on our Book a session page. Tell us who it is for and what you need, and we'll confirm a time by phone, WhatsApp or email.",
+  );
+
   const press = PRESS[0];
   if (press) {
     add(

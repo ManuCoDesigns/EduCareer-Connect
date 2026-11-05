@@ -13,6 +13,7 @@ import {
 import { toast } from "sonner";
 import { FOOTER_LINKS, SOCIAL_LINKS, ORG } from "@/lib/content/site";
 import type { SocialLink } from "@/lib/content/site";
+import { NewsletterForm } from "@/components/site/NewsletterForm";
 
 const SOCIAL_ICONS: Record<string, typeof Facebook> = {
   WhatsApp: MessageCircle,
@@ -74,6 +75,10 @@ export function SiteFooter() {
               <SocialIcon key={link.platform} link={link} />
             ))}
           </div>
+          <p className="mt-6 text-xs font-medium uppercase tracking-wide text-primary-foreground/60">
+            Get updates
+          </p>
+          <NewsletterForm />
         </div>
 
         <div>

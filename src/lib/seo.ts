@@ -14,6 +14,7 @@ type PageMetaInput = {
  * what makes multi-page SEO actually work, versus one shared title.
  */
 export function pageMeta({ title, description, path, image }: PageMetaInput) {
+  const ogImage = image ?? `${ORG.siteUrl}/images/og-image.png`;
   const fullTitle = title === ORG.name ? title : `${title} | ${ORG.shortName}`;
   const url = `${ORG.siteUrl}${path}`;
 
@@ -28,12 +29,8 @@ export function pageMeta({ title, description, path, image }: PageMetaInput) {
     { name: "twitter:description", content: description },
   ];
 
-  // Only emit og:image / twitter:image once a real image asset is supplied —
-  // pointing these at a non-existent file is worse for SEO than omitting them.
-  if (image) {
-    meta.push({ property: "og:image", content: image });
-    meta.push({ name: "twitter:image", content: image });
-  }
+  meta.push({ property: "og:image", content: ogImage });
+  meta.push({ name: "twitter:image", content: ogImage });
 
   return {
     meta,

@@ -247,10 +247,10 @@ function Home() {
           <CTASection
             title="Ready to guide your next step?"
             lede="Join ECCO as a member, or reach out to bring career guidance to your school."
-            primaryLabel="Become a member"
-            primaryHref="/membership"
-            secondaryLabel="Contact us"
-            secondaryHref="/contact"
+            primaryLabel="Book a session"
+            primaryHref="/book"
+            secondaryLabel="Become a member"
+            secondaryHref="/membership"
           />
         </Section>
       </main>

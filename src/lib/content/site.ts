@@ -26,6 +26,7 @@ export const NAV = [
 export const FOOTER_LINKS = [
   { label: "About us", href: "/about" },
   { label: "Programs", href: "/programs" },
+  { label: "Book a session", href: "/book" },
   { label: "Team", href: "/team" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },

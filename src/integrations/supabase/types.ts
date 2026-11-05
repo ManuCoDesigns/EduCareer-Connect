@@ -38,6 +38,72 @@ export type Database = {
         };
         Relationships: [];
       };
+      newsletter_subscribers: {
+        Row: {
+          created_at: string;
+          email: string;
+          id: string;
+          status: string;
+        };
+        Insert: {
+          created_at?: string;
+          email: string;
+          id?: string;
+          status?: string;
+        };
+        Update: {
+          created_at?: string;
+          email?: string;
+          id?: string;
+          status?: string;
+        };
+        Relationships: [];
+      };
+      session_bookings: {
+        Row: {
+          booking_for: string;
+          created_at: string;
+          email: string | null;
+          full_name: string;
+          grade_level: string | null;
+          id: string;
+          mode: string;
+          notes: string | null;
+          phone: string;
+          preferred_date: string | null;
+          status: string;
+          topic: string;
+        };
+        Insert: {
+          booking_for: string;
+          created_at?: string;
+          email?: string | null;
+          full_name: string;
+          grade_level?: string | null;
+          id?: string;
+          mode: string;
+          notes?: string | null;
+          phone: string;
+          preferred_date?: string | null;
+          status?: string;
+          topic: string;
+        };
+        Update: {
+          booking_for?: string;
+          created_at?: string;
+          email?: string | null;
+          full_name?: string;
+          grade_level?: string | null;
+          id?: string;
+          mode?: string;
+          notes?: string | null;
+          phone?: string;
+          preferred_date?: string | null;
+          status?: string;
+          topic?: string;
+        };
+        Relationships: [];
+      };
       membership_payments: {
         Row: {
           amount: number;
