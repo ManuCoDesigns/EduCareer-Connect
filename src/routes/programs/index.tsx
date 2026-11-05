@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/programs/")({
 });
 
 function ProgramsPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -42,12 +44,12 @@ function ProgramsPage() {
                 <span className="inline-flex size-11 items-center justify-center rounded-lg icon-badge text-primary-foreground">
                   <p.icon className="size-5" />
                 </span>
-                <h3 className="mt-5 text-xl group-hover:text-primary">{p.title}</h3>
+                <h3 className="mt-5 text-xl group-hover:text-primary">{t(p.title)}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {p.summary}
+                  {t(p.summary)}
                 </p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                  Learn more <ArrowRight className="size-4" />
+                  {t("Learn more")} <ArrowRight className="size-4" />
                 </span>
               </Link>
             </Reveal>

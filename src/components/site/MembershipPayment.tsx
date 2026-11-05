@@ -1,3 +1,5 @@
+import { RichText } from "@/components/common/RichText";
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { Loader2, Smartphone, ShieldCheck, Copy, CheckCircle2, Zap, Clock } from "lucide-react";
 import { toast } from "sonner";
@@ -48,21 +50,22 @@ const schema = z.object({
 });
 
 export function MembershipPayment() {
+  const t = useT();
   return (
     <div className="card-elegant p-6 sm:p-8">
-      <p className="text-xs font-medium text-primary">Membership contribution</p>
+      <p className="text-xs font-medium text-primary">{t("Membership contribution")}</p>
       <h3 className="mt-2 text-3xl">KSh 2,000</h3>
       <p className="mt-2 text-sm text-muted-foreground">
-        One-off annual membership fee, paid to the official ECCO M-Pesa wallet.
+        {t("One-off annual membership fee, paid to the official ECCO M-Pesa wallet.")}
       </p>
 
       <Tabs defaultValue="manual" className="mt-6">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="manual" className="gap-1.5">
-            <Smartphone className="size-4" /> Send &amp; confirm
+            <Smartphone className="size-4" /> {t("Send & confirm")}
           </TabsTrigger>
           <TabsTrigger value="stk" className="gap-1.5">
-            <Zap className="size-4" /> Instant (STK Push)
+            <Zap className="size-4" /> {t("Instant (STK Push)")}
           </TabsTrigger>
         </TabsList>
 
@@ -79,6 +82,7 @@ export function MembershipPayment() {
 }
 
 function ManualPaymentForm() {
+  const t = useT();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -134,32 +138,35 @@ function ManualPaymentForm() {
   return (
     <>
       <div className="rounded-xl border border-border bg-secondary/40 p-4">
-        <p className="text-xs font-medium text-muted-foreground">ECCO M-Pesa wallet</p>
+        <p className="text-xs font-medium text-muted-foreground">{t("ECCO M-Pesa wallet")}</p>
         <div className="mt-2 flex items-center justify-between gap-3">
           <span className="text-xl font-semibold tracking-wide">{WALLET_NUMBER}</span>
           <Button type="button" variant="outline" size="sm" onClick={copyNumber}>
-            <Copy className="size-4" /> Copy
+            <Copy className="size-4" /> {t("Copy")}
           </Button>
         </div>
         <ol className="mt-4 space-y-1.5 text-sm text-muted-foreground">
           <li>
-            1. Open M-Pesa, choose <span className="font-medium text-foreground">Send Money</span>.
+            <RichText text={t("1. Open M-Pesa, choose **Send Money**.")} />
           </li>
           <li>
-            2. Enter <span className="font-medium text-foreground">{WALLET_NUMBER}</span> (EduCareer
-            Connect Organization).
+            <RichText
+              text={t("2. Enter **{wallet}** (EduCareer Connect Organization).").replace(
+                "{wallet}",
+                WALLET_NUMBER,
+              )}
+            />
           </li>
           <li>
-            3. Enter amount <span className="font-medium text-foreground">KSh 2,000</span> and
-            confirm with your PIN.
+            <RichText text={t("3. Enter amount **KSh 2,000** and confirm with your PIN.")} />
           </li>
-          <li>4. Paste the confirmation code below so we can activate your membership.</li>
+          <li>{t("4. Paste the confirmation code below so we can activate your membership.")}</li>
         </ol>
       </div>
 
       <form onSubmit={submit} className="mt-6 space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="fullName">Full name</Label>
+          <Label htmlFor="fullName">{t("Full name")}</Label>
           <Input
             id="fullName"
             placeholder="Jane Mwikali"
@@ -170,7 +177,7 @@ function ManualPaymentForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="phone">M-Pesa number you paid from</Label>
+          <Label htmlFor="phone">{t("M-Pesa number you paid from")}</Label>
           <div className="relative">
             <Smartphone className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -185,7 +192,7 @@ function ManualPaymentForm() {
           </div>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="email">Email (optional)</Label>
+          <Label htmlFor="email">{t("Email (optional)")}</Label>
           <Input
             id="email"
             type="email"
@@ -196,7 +203,7 @@ function ManualPaymentForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="code">M-Pesa confirmation code</Label>
+          <Label htmlFor="code">{t("M-Pesa confirmation code")}</Label>
           <Input
             id="code"
             placeholder="TJ45KL9QW1"
@@ -209,15 +216,15 @@ function ManualPaymentForm() {
         <Button type="submit" size="lg" className="w-full" disabled={loading}>
           {loading ? (
             <>
-              <Loader2 className="animate-spin" /> Submitting…
+              <Loader2 className="animate-spin" /> {t("Submitting…")}
             </>
           ) : (
-            <>Submit KSh 2,000 payment</>
+            <>{t("Submit KSh 2,000 payment")}</>
           )}
         </Button>
         <p className="flex items-center gap-2 text-xs text-muted-foreground">
-          <ShieldCheck className="size-4 text-leaf" /> Funds go directly to the ECCO M-Pesa wallet.
-          We never ask for your PIN.
+          <ShieldCheck className="size-4 text-leaf" />{" "}
+          {t("Funds go directly to the ECCO M-Pesa wallet. We never ask for your PIN.")}
         </p>
       </form>
 
@@ -225,7 +232,7 @@ function ManualPaymentForm() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <CheckCircle2 className="size-5 text-leaf" /> Payment received for review
+              <CheckCircle2 className="size-5 text-leaf" /> {t("Payment received for review")}
             </DialogTitle>
             <DialogDescription>
               Thank you. We have logged your KSh {AMOUNT.toLocaleString()} contribution and will
@@ -233,7 +240,7 @@ function ManualPaymentForm() {
               activated once the code is verified.
             </DialogDescription>
           </DialogHeader>
-          <Button onClick={() => setOpen(false)}>Done</Button>
+          <Button onClick={() => setOpen(false)}>{t("Done")}</Button>
         </DialogContent>
       </Dialog>
     </>

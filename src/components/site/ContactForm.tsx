@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
@@ -20,6 +21,7 @@ const schema = z.object({
 });
 
 export function ContactForm() {
+  const t = useT();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -55,19 +57,19 @@ export function ContactForm() {
     setEmail("");
     setSubject("");
     setMessage("");
-    toast.success("Message sent");
+    toast.success(t("Message sent"));
   };
 
   if (sent) {
     return (
       <div className="card-elegant flex flex-col items-center gap-3 p-8 text-center">
         <CheckCircle2 className="size-8 text-leaf" />
-        <h3 className="text-xl">Message received</h3>
+        <h3 className="text-xl">{t("Message received")}</h3>
         <p className="max-w-sm text-sm text-muted-foreground">
-          Thank you for reaching out. We'll reply to your email as soon as possible.
+          {t("Thank you for reaching out. We'll reply to your email as soon as possible.")}
         </p>
         <Button variant="outline" onClick={() => setSent(false)}>
-          Send another message
+          {t("Send another message")}
         </Button>
       </div>
     );
@@ -77,7 +79,7 @@ export function ContactForm() {
     <form onSubmit={submit} className="card-elegant space-y-4 p-6 sm:p-8">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="name">Full name</Label>
+          <Label htmlFor="name">{t("Full name")}</Label>
           <Input
             id="name"
             placeholder="Jane Mwikali"
@@ -88,7 +90,7 @@ export function ContactForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t("Email")}</Label>
           <Input
             id="email"
             type="email"
@@ -101,7 +103,7 @@ export function ContactForm() {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="subject">Subject (optional)</Label>
+        <Label htmlFor="subject">{t("Subject (optional)")}</Label>
         <Input
           id="subject"
           placeholder="e.g. School partnership enquiry"
@@ -111,10 +113,10 @@ export function ContactForm() {
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
+        <Label htmlFor="message">{t("Message")}</Label>
         <Textarea
           id="message"
-          placeholder="Tell us how we can help…"
+          placeholder={t("Tell us how we can help…")}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           maxLength={4000}
@@ -125,10 +127,10 @@ export function ContactForm() {
       <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={loading}>
         {loading ? (
           <>
-            <Loader2 className="animate-spin" /> Sending…
+            <Loader2 className="animate-spin" /> {t("Sending…")}
           </>
         ) : (
-          "Send message"
+          t("Send message")
         )}
       </Button>
     </form>

@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
@@ -38,6 +39,7 @@ const selectClass =
   "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 export function BookingForm() {
+  const t = useT();
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -87,12 +89,12 @@ export function BookingForm() {
     return (
       <div className="card-elegant flex flex-col items-center gap-3 p-8 text-center">
         <CheckCircle2 className="size-8 text-leaf" />
-        <h3 className="text-xl">Request received</h3>
+        <h3 className="text-xl">{t("Request received")}</h3>
         <p className="max-w-sm text-sm text-muted-foreground">
-          Thank you. We'll contact you by phone or email to confirm your session time.
+          {t("Thank you. We'll contact you by phone or email to confirm your session time.")}
         </p>
         <Button variant="outline" onClick={() => setSent(false)}>
-          Book another session
+          {t("Book another session")}
         </Button>
       </div>
     );
@@ -102,71 +104,71 @@ export function BookingForm() {
     <form onSubmit={submit} className="card-elegant space-y-4 p-6 sm:p-8">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="fullName">Full name</Label>
+          <Label htmlFor="fullName">{t("Full name")}</Label>
           <Input id="fullName" name="fullName" maxLength={120} required />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="phone">Phone (WhatsApp if possible)</Label>
+          <Label htmlFor="phone">{t("Phone (WhatsApp if possible)")}</Label>
           <Input id="phone" name="phone" type="tel" placeholder="0712 345 678" required />
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="email">Email (optional)</Label>
+        <Label htmlFor="email">{t("Email (optional)")}</Label>
         <Input id="email" name="email" type="email" maxLength={255} />
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="bookingFor">This session is for</Label>
+          <Label htmlFor="bookingFor">{t("This session is for")}</Label>
           <select id="bookingFor" name="bookingFor" className={selectClass} defaultValue="myself">
             {FOR_OPTIONS.map((o) => (
               <option key={o} value={o}>
-                {o.charAt(0).toUpperCase() + o.slice(1)}
+                {t(o.charAt(0).toUpperCase() + o.slice(1))}
               </option>
             ))}
           </select>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="gradeLevel">Grade or level (optional)</Label>
+          <Label htmlFor="gradeLevel">{t("Grade or level (optional)")}</Label>
           <Input id="gradeLevel" name="gradeLevel" placeholder="e.g. Grade 9" maxLength={60} />
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="topic">What would you like help with?</Label>
+          <Label htmlFor="topic">{t("What would you like help with?")}</Label>
           <select id="topic" name="topic" className={selectClass} defaultValue={TOPICS[0]}>
-            {TOPICS.map((t) => (
-              <option key={t} value={t}>
-                {t}
+            {TOPICS.map((topic) => (
+              <option key={topic} value={topic}>
+                {t(topic)}
               </option>
             ))}
           </select>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="mode">How would you like to meet?</Label>
+          <Label htmlFor="mode">{t("How would you like to meet?")}</Label>
           <select id="mode" name="mode" className={selectClass} defaultValue="in person">
             {MODES.map((m) => (
               <option key={m} value={m}>
-                {m.charAt(0).toUpperCase() + m.slice(1)}
+                {t(m.charAt(0).toUpperCase() + m.slice(1))}
               </option>
             ))}
           </select>
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="preferredDate">Preferred date (optional)</Label>
+        <Label htmlFor="preferredDate">{t("Preferred date (optional)")}</Label>
         <Input id="preferredDate" name="preferredDate" type="date" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="notes">Anything we should know? (optional)</Label>
+        <Label htmlFor="notes">{t("Anything we should know? (optional)")}</Label>
         <Textarea id="notes" name="notes" rows={4} maxLength={2000} />
       </div>
       <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={loading}>
         {loading ? (
           <>
-            <Loader2 className="animate-spin" /> Sending…
+            <Loader2 className="animate-spin" /> {t("Sending…")}
           </>
         ) : (
-          "Request a session"
+          t("Request a session")
         )}
       </Button>
     </form>

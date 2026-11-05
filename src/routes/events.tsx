@@ -1,3 +1,4 @@
+import { useLang, useT } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CalendarDays, Clock, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -42,8 +43,8 @@ export const Route = createFileRoute("/events")({
   component: EventsPage,
 });
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-KE", {
+function formatDate(iso: string, locale: string) {
+  return new Date(iso).toLocaleDateString(locale, {
     weekday: "short",
     year: "numeric",
     month: "long",
@@ -52,14 +53,15 @@ function formatDate(iso: string) {
 }
 
 function EventCard({ event, past = false }: { event: EventItem; past?: boolean }) {
+  const { t, locale } = useLang();
   const type = EVENT_TYPES.find((t) => t.key === event.type);
   return (
     <article className={`card-elegant p-6 ${past ? "opacity-80" : ""}`}>
-      <p className="text-xs font-medium text-primary">{type?.title}</p>
+      <p className="text-xs font-medium text-primary">{type ? t(type.title) : ""}</p>
       <h3 className="mt-1 text-xl">{event.title}</h3>
       <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
         <li className="flex items-center gap-2">
-          <CalendarDays className="size-4 text-gold" /> {formatDate(event.date)}
+          <CalendarDays className="size-4 text-gold" /> {formatDate(event.date, locale)}
         </li>
         {event.time && (
           <li className="flex items-center gap-2">
@@ -76,6 +78,7 @@ function EventCard({ event, past = false }: { event: EventItem; past?: boolean }
 }
 
 function EventsPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -85,7 +88,7 @@ function EventsPage() {
         lede="Workshops, career days and member meetings that bring learners, parents, teachers and professionals together."
         actions={
           <Button asChild variant="secondary" size="lg">
-            <Link to="/book">Book a session</Link>
+            <Link to="/book">{t("Book a session")}</Link>
           </Button>
         }
       />
@@ -105,14 +108,15 @@ function EventsPage() {
           <Reveal>
             <div className="card-elegant mt-8 grid items-center gap-6 p-6 sm:p-10 md:grid-cols-2">
               <div>
-                <h3 className="text-xl">No dates announced yet</h3>
+                <h3 className="text-xl">{t("No dates announced yet")}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  We announce events here and to our email list first. Subscribe and we'll tell you
-                  as soon as the next workshop, career day or meeting is set.
+                  {t(
+                    "We announce events here and to our email list first. Subscribe and we'll tell you as soon as the next workshop, career day or meeting is set.",
+                  )}
                 </p>
               </div>
               <div>
-                <p className="text-xs font-medium text-primary">Get notified</p>
+                <p className="text-xs font-medium text-primary">{t("Get notified")}</p>
                 <NewsletterForm tone="light" />
               </div>
             </div>
@@ -126,14 +130,14 @@ function EventsPage() {
           lede="Three kinds of gatherings, each with a clear purpose."
         />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {EVENT_TYPES.map((t, i) => (
-            <Reveal key={t.key} delayMs={i * 80}>
+          {EVENT_TYPES.map((type, i) => (
+            <Reveal key={type.key} delayMs={i * 80}>
               <div className="card-elegant h-full p-6">
                 <span className="icon-badge inline-flex size-11 items-center justify-center rounded-lg text-primary-foreground">
-                  <t.icon className="size-5" />
+                  <type.icon className="size-5" />
                 </span>
-                <h3 className="mt-4 text-lg">{t.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
+                <h3 className="mt-4 text-lg">{t(type.title)}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(type.text)}</p>
               </div>
             </Reveal>
           ))}

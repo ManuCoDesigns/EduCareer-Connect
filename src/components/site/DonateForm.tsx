@@ -1,3 +1,5 @@
+import { RichText } from "@/components/common/RichText";
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { CheckCircle2, Copy, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -34,6 +36,7 @@ const selectClass =
   "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 export function DonateForm() {
+  const t = useT();
   const [amount, setAmount] = useState<string>("1000");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
@@ -88,12 +91,12 @@ export function DonateForm() {
     return (
       <div className="card-elegant flex flex-col items-center gap-3 p-8 text-center">
         <CheckCircle2 className="size-8 text-leaf" />
-        <h3 className="text-xl">Thank you for giving</h3>
+        <h3 className="text-xl">{t("Thank you for giving")}</h3>
         <p className="max-w-sm text-sm text-muted-foreground">
-          We've recorded your donation and will confirm it against the ECCO M-Pesa wallet.
+          {t("We've recorded your donation and will confirm it against the ECCO M-Pesa wallet.")}
         </p>
         <Button variant="outline" onClick={() => setSent(false)}>
-          Make another donation
+          {t("Make another donation")}
         </Button>
       </div>
     );
@@ -102,23 +105,30 @@ export function DonateForm() {
   return (
     <div className="card-elegant p-6 sm:p-8">
       <div className="rounded-xl border border-border bg-secondary/40 p-4">
-        <p className="text-xs font-medium text-muted-foreground">ECCO M-Pesa wallet</p>
+        <p className="text-xs font-medium text-muted-foreground">{t("ECCO M-Pesa wallet")}</p>
         <div className="mt-2 flex items-center justify-between gap-3">
           <span className="text-xl font-semibold tracking-wide">{WALLET_NUMBER}</span>
           <Button type="button" variant="outline" size="sm" onClick={copy}>
-            <Copy className="size-4" /> Copy
+            <Copy className="size-4" /> {t("Copy")}
           </Button>
         </div>
         <ol className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-          <li>1. Open M-Pesa and choose Send Money.</li>
-          <li>2. Send your gift to {WALLET_NUMBER} (EduCareer Connect Organization).</li>
-          <li>3. Paste the confirmation code below so we can record it.</li>
+          <li>{t("1. Open M-Pesa and choose Send Money.")}</li>
+          <li>
+            <RichText
+              text={t("2. Enter **{wallet}** (EduCareer Connect Organization).").replace(
+                "{wallet}",
+                WALLET_NUMBER,
+              )}
+            />
+          </li>
+          <li>{t("3. Paste the confirmation code below so we can record it.")}</li>
         </ol>
       </div>
 
       <form onSubmit={submit} className="mt-6 space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="amount">Amount (KSh)</Label>
+          <Label htmlFor="amount">{t("Amount (KSh)")}</Label>
           <div className="flex flex-wrap gap-2">
             {PRESETS.map((p) => (
               <Button
@@ -143,7 +153,7 @@ export function DonateForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="purpose">Support</Label>
+          <Label htmlFor="purpose">{t("Support")}</Label>
           <select
             id="purpose"
             name="purpose"
@@ -152,28 +162,28 @@ export function DonateForm() {
           >
             {DONATION_PURPOSES.map((p) => (
               <option key={p} value={p}>
-                {p}
+                {t(p)}
               </option>
             ))}
           </select>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="donorName">Your name</Label>
+            <Label htmlFor="donorName">{t("Your name")}</Label>
             <Input id="donorName" name="donorName" maxLength={120} required />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">M-Pesa number you paid from</Label>
+            <Label htmlFor="phone">{t("M-Pesa number you paid from")}</Label>
             <Input id="phone" name="phone" type="tel" placeholder="0712 345 678" required />
           </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="email">Email (optional, for a thank-you)</Label>
+            <Label htmlFor="email">{t("Email (optional, for a thank-you)")}</Label>
             <Input id="email" name="email" type="email" maxLength={255} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="mpesaCode">M-Pesa confirmation code</Label>
+            <Label htmlFor="mpesaCode">{t("M-Pesa confirmation code")}</Label>
             <Input
               id="mpesaCode"
               name="mpesaCode"
@@ -185,15 +195,15 @@ export function DonateForm() {
         </div>
         <label className="flex items-center gap-2 text-sm text-muted-foreground">
           <input type="checkbox" name="anonymous" className="size-4 accent-[var(--primary)]" />
-          Keep my gift anonymous
+          {t("Keep my gift anonymous")}
         </label>
         <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={loading}>
           {loading ? (
             <>
-              <Loader2 className="animate-spin" /> Recording…
+              <Loader2 className="animate-spin" /> {t("Recording…")}
             </>
           ) : (
-            "Record my donation"
+            t("Record my donation")
           )}
         </Button>
       </form>

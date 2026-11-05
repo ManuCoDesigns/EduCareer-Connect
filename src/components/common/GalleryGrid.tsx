@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -5,6 +6,7 @@ import { Reveal } from "@/components/common/Reveal";
 import type { GalleryItem } from "@/lib/content/gallery-blog";
 
 function GalleryThumb({ item, onOpen }: { item: GalleryItem; onOpen: () => void }) {
+  const t = useT();
   const [loaded, setLoaded] = useState(false);
   return (
     <button
@@ -22,13 +24,14 @@ function GalleryThumb({ item, onOpen }: { item: GalleryItem; onOpen: () => void 
         }`}
       />
       <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-2 text-left text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-        {item.caption}
+        {t(item.caption)}
       </span>
     </button>
   );
 }
 
 export function GalleryGrid({ items }: { items: GalleryItem[] }) {
+  const t = useT();
   const [active, setActive] = useState<GalleryItem | null>(null);
 
   return (
@@ -43,7 +46,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent className="max-w-3xl p-0">
-          <DialogTitle className="sr-only">{active?.caption}</DialogTitle>
+          <DialogTitle className="sr-only">{active ? t(active.caption) : ""}</DialogTitle>
           {active && (
             <div className="relative">
               <img
@@ -51,12 +54,12 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 alt={active.alt}
                 className="max-h-[80vh] w-full object-contain"
               />
-              <p className="p-4 text-sm text-muted-foreground">{active.caption}</p>
+              <p className="p-4 text-sm text-muted-foreground">{t(active.caption)}</p>
               <button
                 type="button"
                 onClick={() => setActive(null)}
                 className="absolute right-3 top-3 rounded-full bg-background/90 p-1.5 shadow"
-                aria-label="Close"
+                aria-label={t("Close")}
               >
                 <X className="size-4" />
               </button>

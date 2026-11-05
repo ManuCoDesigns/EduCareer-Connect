@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -34,6 +35,7 @@ export const Route = createFileRoute("/programs/$slug")({
 });
 
 function ProgramDetailPage() {
+  const t = useT();
   const { slug } = Route.useLoaderData();
   const program = findProgram(slug);
   if (!program) return null;
@@ -57,15 +59,15 @@ function ProgramDetailPage() {
             <span className="inline-flex size-12 items-center justify-center rounded-lg icon-badge text-primary-foreground">
               <program.icon className="size-6" />
             </span>
-            <h2 className="mt-6 text-2xl">How it works</h2>
-            <p className="mt-3 leading-relaxed text-muted-foreground">{program.body}</p>
+            <h2 className="mt-6 text-2xl">{t("How it works")}</h2>
+            <p className="mt-3 leading-relaxed text-muted-foreground">{t(program.body)}</p>
           </div>
           <aside className="card-elegant h-fit p-6">
-            <p className="text-xs font-medium text-primary">Who it's for</p>
-            <p className="mt-2 text-sm leading-relaxed text-foreground">{program.audience}</p>
+            <p className="text-xs font-medium text-primary">{t("Who it's for")}</p>
+            <p className="mt-2 text-sm leading-relaxed text-foreground">{t(program.audience)}</p>
             <div className="mt-6 border-t border-border pt-6">
               <Link to="/contact" className="text-sm font-medium text-primary hover:underline">
-                Ask about this program →
+                {t("Ask about this program →")}
               </Link>
             </div>
           </aside>
@@ -73,7 +75,7 @@ function ProgramDetailPage() {
       </Section>
 
       <Section tone="muted">
-        <h2 className="text-2xl">Other programs</h2>
+        <h2 className="text-2xl">{t("Other programs")}</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {others.map((p) => (
             <Link
@@ -82,8 +84,8 @@ function ProgramDetailPage() {
               params={{ slug: p.slug }}
               className="card-elegant p-5"
             >
-              <h3 className="text-lg">{p.title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{p.summary}</p>
+              <h3 className="text-lg">{t(p.title)}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{t(p.summary)}</p>
             </Link>
           ))}
         </div>

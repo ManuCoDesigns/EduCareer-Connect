@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { CalendarCheck, PhoneCall, UserRoundCheck } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -36,6 +37,7 @@ const STEPS = [
 ];
 
 function BookPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -54,14 +56,14 @@ function BookPage() {
                   <Icon className="size-5" />
                 </span>
                 <div>
-                  <p className="text-xs font-medium text-primary">Step {i + 1}</p>
-                  <h2 className="text-lg">{title}</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">{text}</p>
+                  <p className="text-xs font-medium text-primary">{t(`Step ${i + 1}`)}</p>
+                  <h2 className="text-lg">{t(title)}</h2>
+                  <p className="mt-1 text-sm text-muted-foreground">{t(text)}</p>
                 </div>
               </li>
             ))}
             <li className="rounded-2xl bg-secondary/50 p-5 text-sm text-muted-foreground">
-              Prefer to talk first? Call {ORG.phoneDisplay} or email {ORG.email}.
+              {t("Prefer to talk first?")} {ORG.phoneDisplay} · {ORG.email}
             </li>
           </ol>
           <BookingForm />

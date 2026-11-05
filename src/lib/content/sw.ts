@@ -1,4 +1,5 @@
 import { ORG } from "@/lib/content/site";
+import { SW_CONTENT } from "@/lib/content/sw-content";
 
 /**
  * Kiswahili translations, keyed by the exact English string used in the UI.
@@ -105,4 +106,6 @@ export const SW: Record<string, string> = {
   "Journalists and partners are welcome to reach out for interviews, photos and facts about ECCO.":
     "Waandishi wa habari na washirika wanakaribishwa kuwasiliana nasi kwa mahojiano, picha na taarifa kuhusu ECCO.",
   "Meet the team": "Kutana na timu",
+
+  ...SW_CONTENT,
 };

@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Compass, HeartHandshake, Users } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -42,6 +43,7 @@ const WAYS = [
 ];
 
 function DonatePage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -64,19 +66,20 @@ function DonatePage() {
                       <Icon className="size-5" />
                     </span>
                     <div>
-                      <h3 className="text-lg">{title}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">{text}</p>
+                      <h3 className="text-lg">{t(title)}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{t(text)}</p>
                     </div>
                   </li>
                 </Reveal>
               ))}
             </ul>
             <p className="mt-8 rounded-2xl bg-secondary/50 p-5 text-sm leading-relaxed text-muted-foreground">
-              Organisations and schools that would like to partner or sponsor a programme can{" "}
+              {t(
+                "Organisations and schools that would like to partner or sponsor a programme are welcome to talk to us directly.",
+              )}{" "}
               <Link to="/contact" className="font-medium text-primary hover:underline">
-                contact us
-              </Link>{" "}
-              to discuss it directly.
+                {t("Contact us")}
+              </Link>
             </p>
           </div>
           <DonateForm />

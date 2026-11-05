@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <script
@@ -46,16 +48,14 @@ function AboutPage() {
           <div>
             <SectionHeading title="Our story" />
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              {ORG.name} ({ORG.abbreviation}) was founded by {ORG.founder} to address a gap many
-              Kenyan learners face: strong classroom performance without a clear sense of what comes
-              next. Based in {ORG.location}, ECCO delivers career guidance, counselling and
-              mentorship aligned with Competency-Based Education (CBE), helping learners, parents
-              and teachers navigate pathway decisions with confidence.
+              {t(
+                `${ORG.name} (${ORG.abbreviation}) was founded by ${ORG.founder} to address a gap many Kenyan learners face: strong classroom performance without a clear sense of what comes next. Based in ${ORG.location}, ECCO delivers career guidance, counselling and mentorship aligned with Competency-Based Education (CBE), helping learners, parents and teachers navigate pathway decisions with confidence.`,
+              )}
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              We operate as a non-profit, non-political and non-religious organization, open to any
-              learner regardless of background — because we believe every young person deserves a
-              real pathway from education into purposeful work.
+              {t(
+                "We operate as a non-profit, non-political and non-religious organization, open to any learner regardless of background — because we believe every young person deserves a real pathway from education into purposeful work.",
+              )}
             </p>
             <div className="mt-8 flex flex-wrap gap-2.5">
               {VALUES.map((v) => (
@@ -63,7 +63,7 @@ function AboutPage() {
                   key={v}
                   className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-primary"
                 >
-                  {v}
+                  {t(v)}
                 </span>
               ))}
             </div>
@@ -79,7 +79,7 @@ function AboutPage() {
             <figcaption className="border-t border-border bg-card px-5 py-4">
               <p className="font-semibold text-primary">{FOUNDER.name}</p>
               <p className="text-sm text-muted-foreground">
-                {FOUNDER.role} — {ORG.abbreviation}
+                {t(FOUNDER.role)} — {ORG.abbreviation}
               </p>
             </figcaption>
           </figure>
@@ -108,8 +108,8 @@ function AboutPage() {
           ].map((i) => (
             <div key={i.k}>
               <div className="gold-rule" />
-              <h3 className="mt-4 text-xl">{i.k}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{i.v}</p>
+              <h3 className="mt-4 text-xl">{t(i.k)}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(i.v)}</p>
             </div>
           ))}
         </div>
@@ -127,10 +127,10 @@ function AboutPage() {
       <Section tone="muted">
         <SectionHeading title="Membership tiers" lede="How members participate in ECCO's work." />
         <dl className="mt-10 grid gap-6 sm:grid-cols-2">
-          {MEMBERSHIP_TIERS.map((t) => (
-            <div key={t.name} className="border-l-2 border-gold pl-4">
-              <dt className="font-semibold text-primary">{t.name} member</dt>
-              <dd className="text-sm text-muted-foreground">{t.body}</dd>
+          {MEMBERSHIP_TIERS.map((tier) => (
+            <div key={tier.name} className="border-l-2 border-gold pl-4">
+              <dt className="font-semibold text-primary">{t(`${tier.name} member`)}</dt>
+              <dd className="text-sm text-muted-foreground">{t(tier.body)}</dd>
             </div>
           ))}
         </dl>

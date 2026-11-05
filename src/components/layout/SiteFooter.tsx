@@ -107,7 +107,7 @@ export function SiteFooter() {
           </p>
           <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-gold" /> {ORG.location}
+              <MapPin className="mt-0.5 size-4 shrink-0 text-gold" /> {t(ORG.location)}
             </li>
             <li className="flex items-start gap-2.5">
               <Mail className="mt-0.5 size-4 shrink-0 text-gold" />

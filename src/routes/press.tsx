@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Newspaper, Quote } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -45,6 +46,7 @@ export const Route = createFileRoute("/press")({
 });
 
 function PressPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -63,17 +65,17 @@ function PressPage() {
                 <div>
                   <p className="inline-flex items-center gap-2 text-xs font-medium text-primary">
                     <Newspaper className="size-4" />
-                    {item.outlet} · {item.published}
+                    {item.outlet} · {t(item.published)}
                   </p>
                   <h2 className="mt-3 text-2xl leading-tight sm:text-3xl">{item.headline}</h2>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    By {item.author}, {item.authorRole} · {item.publication}
+                    {t("By")} {item.author}, {t(item.authorRole)} · {item.publication}
                   </p>
-                  <p className="mt-5 leading-relaxed text-muted-foreground">{item.summary}</p>
+                  <p className="mt-5 leading-relaxed text-muted-foreground">{t(item.summary)}</p>
                   <div className="mt-6 flex flex-wrap items-center gap-4">
                     <Button asChild>
                       <a href={item.url} target="_blank" rel="noopener noreferrer">
-                        Read the original <ArrowUpRight className="ml-1 size-4" />
+                        {t("Read the original")} <ArrowUpRight className="ml-1 size-4" />
                       </a>
                     </Button>
                     <ShareButtons path="/press" title={item.headline} />
@@ -87,16 +89,16 @@ function PressPage() {
                       “…{item.pullQuote}.”
                     </blockquote>
                     <figcaption className="mt-3 text-xs text-muted-foreground">
-                      {item.quoteAttribution}
+                      {t(item.quoteAttribution)}
                     </figcaption>
                   </figure>
                   <div>
-                    <p className="text-xs font-medium text-primary">Key points</p>
+                    <p className="text-xs font-medium text-primary">{t("Key points")}</p>
                     <ul className="mt-3 space-y-3 text-sm leading-relaxed text-muted-foreground">
                       {item.highlights.map((h) => (
                         <li key={h} className="flex gap-2">
                           <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold" />
-                          {h}
+                          {t(h)}
                         </li>
                       ))}
                     </ul>
@@ -107,8 +109,9 @@ function PressPage() {
           ))}
         </div>
         <p className="mt-8 text-xs text-muted-foreground">
-          Summaries are written by {ORG.abbreviation}. All rights in the original articles remain
-          with their publishers; please follow the link to read them in full.
+          {t(
+            "Summaries are written by ECCO. All rights in the original articles remain with their publishers; please follow the link to read them in full.",
+          )}
         </p>
       </Section>
 
@@ -116,22 +119,25 @@ function PressPage() {
         <Reveal>
           <div className="card-elegant grid gap-6 p-6 sm:p-10 lg:grid-cols-[1.4fr_1fr]">
             <div>
-              <p className="text-xs font-medium text-primary">For journalists and partners</p>
-              <h2 className="mt-2 text-2xl sm:text-3xl">About {ORG.abbreviation} in brief</h2>
+              <p className="text-xs font-medium text-primary">
+                {t("For journalists and partners")}
+              </p>
+              <h2 className="mt-2 text-2xl sm:text-3xl">{t("About ECCO in brief")}</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                {ORG.name} ({ORG.abbreviation}) is a Kenyan career-guidance, counselling and
-                mentorship organisation based in {ORG.location}. Founded by {ORG.founder}, it helps
-                learners choose CBE pathways with confidence and grow into competent, purpose-driven
-                professionals.
+                {t(
+                  `${ORG.name} (${ORG.abbreviation}) is a Kenyan career-guidance, counselling and mentorship organisation based in ${ORG.location}. Founded by ${ORG.founder}, it helps learners choose CBE pathways with confidence and grow into competent, purpose-driven professionals.`,
+                )}
               </p>
             </div>
             <dl className="space-y-3 text-sm">
               <div>
-                <dt className="text-xs font-medium text-primary">Media contact</dt>
-                <dd className="mt-1 text-foreground">{ORG.founder}, Founder</dd>
+                <dt className="text-xs font-medium text-primary">{t("Media contact")}</dt>
+                <dd className="mt-1 text-foreground">
+                  {ORG.founder}, {t("Founder")}
+                </dd>
               </div>
               <div>
-                <dt className="text-xs font-medium text-primary">Email</dt>
+                <dt className="text-xs font-medium text-primary">{t("Email")}</dt>
                 <dd className="mt-1">
                   <a className="text-foreground hover:text-primary" href={`mailto:${ORG.email}`}>
                     {ORG.email}
@@ -139,7 +145,7 @@ function PressPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-medium text-primary">Phone</dt>
+                <dt className="text-xs font-medium text-primary">{t("Phone")}</dt>
                 <dd className="mt-1">
                   <a className="text-foreground hover:text-primary" href={`tel:${ORG.phone}`}>
                     {ORG.phoneDisplay}

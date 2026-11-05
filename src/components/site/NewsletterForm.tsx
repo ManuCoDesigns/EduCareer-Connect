@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
@@ -10,6 +11,7 @@ const emailSchema = z.string().trim().min(5).max(255).email();
 
 /** Compact signup for the dark footer. Duplicate emails are treated as success so addresses aren't revealed. */
 export function NewsletterForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
+  const t = useT();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -40,7 +42,7 @@ export function NewsletterForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
       <p
         className={`mt-4 flex items-center gap-2 text-sm ${tone === "dark" ? "text-gold" : "text-primary"}`}
       >
-        <Check className="size-4" /> You're on the list. Thank you!
+        <Check className="size-4" /> {t("You're on the list. Thank you!")}
       </p>
     );
   }
@@ -48,7 +50,7 @@ export function NewsletterForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <form onSubmit={submit} className="mt-4 flex max-w-xs gap-2">
       <label htmlFor="newsletter-email" className="sr-only">
-        Email address
+        {t("Email address")}
       </label>
       <Input
         id="newsletter-email"
@@ -65,7 +67,7 @@ export function NewsletterForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
         }
       />
       <Button type="submit" variant={tone === "dark" ? "secondary" : "default"} disabled={loading}>
-        {loading ? <Loader2 className="animate-spin" /> : "Join"}
+        {loading ? <Loader2 className="animate-spin" /> : t("Join")}
       </Button>
     </form>
   );

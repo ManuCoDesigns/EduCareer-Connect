@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { useState } from "react";
 import { Check, Facebook, Link2, MessageCircle, Send, Twitter } from "lucide-react";
 import { toast } from "sonner";
@@ -11,6 +12,7 @@ type ShareProps = {
 
 /** Share links for the main networks plus copy-to-clipboard. No third-party scripts. */
 export function ShareButtons({ path, title }: ShareProps) {
+  const tr = useT();
   const [copied, setCopied] = useState(false);
   const url = `${ORG.siteUrl}${path}`;
   const u = encodeURIComponent(url);
@@ -47,7 +49,7 @@ export function ShareButtons({ path, title }: ShareProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="mr-1 text-xs font-medium text-muted-foreground">Share</span>
+      <span className="mr-1 text-xs font-medium text-muted-foreground">{tr("Share")}</span>
       {targets.map(({ label, href, Icon }) => (
         <a
           key={label}

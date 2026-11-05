@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/membership")({
 });
 
 function MembershipPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -37,22 +39,22 @@ function MembershipPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <h2 className="text-2xl">What you get</h2>
+            <h2 className="text-2xl">{t("What you get")}</h2>
             <ul className="mt-5 space-y-3">
               {MEMBERSHIP_BENEFITS.map((b) => (
                 <li key={b} className="flex items-start gap-2.5 text-sm text-muted-foreground">
                   <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-gold" />
-                  {b}
+                  {t(b)}
                 </li>
               ))}
             </ul>
 
-            <h2 className="mt-10 text-2xl">Membership tiers</h2>
+            <h2 className="mt-10 text-2xl">{t("Membership tiers")}</h2>
             <dl className="mt-5 space-y-5">
-              {MEMBERSHIP_TIERS.map((t) => (
-                <div key={t.name} className="border-l-2 border-gold pl-4">
-                  <dt className="font-semibold text-primary">{t.name} member</dt>
-                  <dd className="text-sm text-muted-foreground">{t.body}</dd>
+              {MEMBERSHIP_TIERS.map((tier) => (
+                <div key={tier.name} className="border-l-2 border-gold pl-4">
+                  <dt className="font-semibold text-primary">{t(`${tier.name} member`)}</dt>
+                  <dd className="text-sm text-muted-foreground">{t(tier.body)}</dd>
                 </div>
               ))}
             </dl>
@@ -63,7 +65,7 @@ function MembershipPage() {
       </Section>
 
       <Section tone="muted">
-        <h2 className="text-2xl">Frequently asked questions</h2>
+        <h2 className="text-2xl">{t("Frequently asked questions")}</h2>
         <Accordion
           type="single"
           collapsible
@@ -73,10 +75,10 @@ function MembershipPage() {
           {FAQS.map((f) => (
             <AccordionItem key={f.question} value={f.question}>
               <AccordionTrigger className="text-left text-base font-semibold hover:text-primary hover:no-underline">
-                {f.question}
+                {t(f.question)}
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                {f.answer}
+                {t(f.answer)}
               </AccordionContent>
             </AccordionItem>
           ))}

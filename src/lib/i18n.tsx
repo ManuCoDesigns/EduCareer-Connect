@@ -9,6 +9,10 @@ type LangContextValue = {
   setLang: (lang: Lang) => void;
   /** Translates an English string; unknown strings fall back to English. */
   t: (en: string) => string;
+  /** Translates then fills {name} placeholders. */
+  tf: (en: string, vars: Record<string, string>) => string;
+  /** BCP-47 locale for dates and numbers. */
+  locale: string;
 };
 
 const STORAGE_KEY = "ecco-lang";
@@ -17,6 +21,8 @@ const LangContext = createContext<LangContextValue>({
   lang: "en",
   setLang: () => undefined,
   t: (en) => en,
+  tf: (en, vars) => en.replace(/\{(\w+)\}/g, (_, k: string) => vars[k] ?? ""),
+  locale: "en-KE",
 });
 
 /**
@@ -53,6 +59,12 @@ export function LangProvider({ children }: { children: ReactNode }) {
       lang,
       setLang,
       t: (en) => (lang === "sw" ? (SW[en] ?? en) : en),
+      tf: (en, vars) =>
+        (lang === "sw" ? (SW[en] ?? en) : en).replace(
+          /\{(\w+)\}/g,
+          (_, k: string) => vars[k] ?? "",
+        ),
+      locale: lang === "sw" ? "sw-KE" : "en-KE",
     }),
     [lang, setLang],
   );

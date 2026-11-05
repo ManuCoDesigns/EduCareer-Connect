@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/team")({
 });
 
 function TeamPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -47,16 +49,16 @@ function TeamPage() {
             />
           </figure>
           <div>
-            <p className="text-xs font-medium text-primary">{FOUNDER.role}</p>
+            <p className="text-xs font-medium text-primary">{t(FOUNDER.role)}</p>
             <h2 className="mt-2 text-3xl">{FOUNDER.name}</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">{t(FOUNDER.bio)}</p>
             <ul className="mt-5 flex flex-wrap gap-2">
               {FOUNDER_HIGHLIGHTS.map((h) => (
                 <li
                   key={h}
                   className="rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs text-foreground"
                 >
-                  {h}
+                  {t(h)}
                 </li>
               ))}
             </ul>
@@ -64,7 +66,7 @@ function TeamPage() {
               to="/press"
               className="mt-4 inline-block text-sm font-medium text-primary hover:underline"
             >
-              Read the feature in the press →
+              {t("Read the feature in the press →")}
             </Link>
             {FOUNDER.quote && (
               <blockquote className="mt-6 border-l-2 border-gold pl-4 text-sm italic leading-relaxed text-foreground">
@@ -78,10 +80,10 @@ function TeamPage() {
       <Section id="secretary" tone="muted">
         <div className="grid items-start gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
           <Reveal>
-            <p className="text-xs font-medium text-primary">{GODFREY_CHESA.role}</p>
+            <p className="text-xs font-medium text-primary">{t(GODFREY_CHESA.role)}</p>
             <h2 className="mt-2 text-3xl sm:text-4xl">{GODFREY_CHESA.name}</h2>
             <p className="mt-2 text-sm font-medium text-muted-foreground">
-              {GODFREY_CHESA.credentials}
+              {t(GODFREY_CHESA.credentials)}
             </p>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               {GODFREY_CHESA.paragraphs.map((p) => (
@@ -112,27 +114,27 @@ function TeamPage() {
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <Reveal>
-            <h3 className="text-lg">Core competencies</h3>
+            <h3 className="text-lg">{t("Core competencies")}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {GODFREY_CHESA.competencies.map((c) => (
                 <span
                   key={c}
                   className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-primary"
                 >
-                  {c}
+                  {t(c)}
                 </span>
               ))}
             </div>
           </Reveal>
           <Reveal delayMs={80}>
-            <h3 className="text-lg">Ministry roles</h3>
+            <h3 className="text-lg">{t("Ministry roles")}</h3>
             <ul className="mt-4 space-y-3">
               {GODFREY_CHESA.ministryRoles.map((r) => (
                 <li
                   key={r}
                   className="border-l-2 border-gold pl-4 text-sm leading-relaxed text-muted-foreground"
                 >
-                  {r}
+                  {t(r)}
                 </li>
               ))}
             </ul>
@@ -148,9 +150,9 @@ function TeamPage() {
           ))}
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
-          Interested in serving on the Executive Committee?{" "}
+          {t("Interested in serving on the Executive Committee?")}{" "}
           <a href={`mailto:${ORG.email}`} className="font-medium text-primary hover:underline">
-            Get in touch
+            {t("Get in touch")}
           </a>
           .
         </p>

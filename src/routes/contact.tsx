@@ -1,3 +1,4 @@
+import { useT } from "@/lib/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -34,14 +36,14 @@ function ContactPage() {
             <div className="flex items-start gap-3">
               <MapPin className="mt-0.5 size-5 shrink-0 text-leaf" />
               <div>
-                <p className="text-sm font-semibold text-foreground">Office</p>
-                <p className="text-sm text-muted-foreground">{ORG.location}</p>
+                <p className="text-sm font-semibold text-foreground">{t("Office")}</p>
+                <p className="text-sm text-muted-foreground">{t(ORG.location)}</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <Mail className="mt-0.5 size-5 shrink-0 text-leaf" />
               <div>
-                <p className="text-sm font-semibold text-foreground">Email</p>
+                <p className="text-sm font-semibold text-foreground">{t("Email")}</p>
                 <a
                   href={`mailto:${ORG.email}`}
                   className="text-sm text-muted-foreground hover:text-primary"
@@ -53,7 +55,7 @@ function ContactPage() {
             <div className="flex items-start gap-3">
               <Phone className="mt-0.5 size-5 shrink-0 text-leaf" />
               <div>
-                <p className="text-sm font-semibold text-foreground">Phone</p>
+                <p className="text-sm font-semibold text-foreground">{t("Phone")}</p>
                 <a
                   href={`tel:${ORG.phone}`}
                   className="text-sm text-muted-foreground hover:text-primary"

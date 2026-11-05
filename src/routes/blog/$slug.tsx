@@ -1,3 +1,4 @@
+import { useLang } from "@/lib/i18n";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -26,7 +27,8 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogPostPage() {
   const post = Route.useLoaderData();
-  const date = new Date(post.date).toLocaleDateString("en-KE", {
+  const { t, locale } = useLang();
+  const date = new Date(post.date).toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -45,10 +47,10 @@ function BlogPostPage() {
 
       <Section>
         <div className="mx-auto max-w-2xl">
-          <p className="text-xs font-medium text-primary">{post.category}</p>
+          <p className="text-xs font-medium text-primary">{t(post.category)}</p>
           <h1 className="mt-3 text-3xl leading-tight sm:text-4xl">{post.title}</h1>
           <p className="mt-3 text-sm text-muted-foreground">
-            {date} · {post.readMinutes} min read
+            {date} · {post.readMinutes} {t("min read")}
           </p>
           {post.author && (
             <div className="mt-5 flex items-center gap-3">
@@ -96,7 +98,7 @@ function BlogPostPage() {
             to="/blog"
             className="mt-6 inline-block text-sm font-medium text-primary hover:underline"
           >
-            ← Back to all articles
+            {t("← Back to all articles")}
           </Link>
         </div>
       </Section>

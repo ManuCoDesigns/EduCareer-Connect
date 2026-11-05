@@ -64,7 +64,7 @@ function Home() {
           <PageContainer className="grid items-center gap-12 py-20 md:grid-cols-[1.15fr_1fr] md:py-28">
             <div>
               <p className="reveal-on-load flex items-center gap-2 text-xs font-medium text-gold">
-                <Sparkles className="size-4" /> Registered NGO · Wote, Makueni County
+                <Sparkles className="size-4" /> {t("Registered NGO · Wote, Makueni County")}
               </p>
               <h1
                 className="reveal-on-load mt-5 text-4xl leading-[1.08] sm:text-6xl"
@@ -116,7 +116,7 @@ function Home() {
                 <img src="/images/logo.png" alt="" className="size-11 object-contain" />
                 <div>
                   <p className="text-sm font-semibold text-foreground">{ORG.founder}</p>
-                  <p className="text-xs text-muted-foreground">Founder, {ORG.abbreviation}</p>
+                  <p className="text-xs text-muted-foreground">{t("Founder, ECCO")}</p>
                 </div>
               </div>
             </div>
@@ -134,11 +134,9 @@ function Home() {
             <div>
               <SectionHeading title="Who we are" />
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                {ORG.abbreviation} ({ORG.name}) is a non-profit body registered in Kenya with its
-                office in {ORG.location}. We exist to close the gap between classroom learning and
-                real career pathways — supporting CBE implementation, nurturing mental wellness, and
-                building partnerships that carry learners from school into the job market.{" "}
-                {ORG.abbreviation} was founded by {ORG.founder}.
+                {t(
+                  `${ORG.abbreviation} (${ORG.name}) is a non-profit body registered in Kenya with its office in ${ORG.location}. We exist to close the gap between classroom learning and real career pathways — supporting CBE implementation, nurturing mental wellness, and building partnerships that carry learners from school into the job market. ${ORG.abbreviation} was founded by ${ORG.founder}.`,
+                )}
               </p>
               <div className="mt-8 flex flex-wrap gap-2.5">
                 {VALUES.map((v) => (
@@ -146,7 +144,7 @@ function Home() {
                     key={v}
                     className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-primary"
                   >
-                    {v}
+                    {t(v)}
                   </span>
                 ))}
               </div>
@@ -198,8 +196,10 @@ function Home() {
                   <span className="inline-flex size-11 items-center justify-center rounded-lg icon-badge text-primary-foreground">
                     <p.icon className="size-5" />
                   </span>
-                  <h3 className="mt-5 text-xl group-hover:text-primary">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
+                  <h3 className="mt-5 text-xl group-hover:text-primary">{t(p.title)}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {t(p.summary)}
+                  </p>
                 </Link>
               </Reveal>
             ))}
@@ -283,15 +283,15 @@ function Home() {
                 </span>
                 <div>
                   <p className="text-xs font-medium text-primary">
-                    As featured by {PRESS[0].outlet}
+                    {t("As featured by")} {PRESS[0].outlet}
                   </p>
                   <h3 className="mt-1 text-xl">{PRESS[0].headline}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    How our founder is opening doors for girls in science and mathematics.
+                    {t("How our founder is opening doors for girls in science and mathematics.")}
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
-                  Read more
+                  {t("Read more")}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>

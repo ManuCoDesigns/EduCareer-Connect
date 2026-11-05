@@ -1,3 +1,4 @@
+import { useLang } from "@/lib/i18n";
 import { useT } from "@/lib/i18n";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Quote } from "lucide-react";
@@ -9,10 +10,11 @@ import type { Testimonial } from "@/lib/content/misc";
 import type { BlogPost } from "@/lib/content/gallery-blog";
 
 export function StatStrip({ stats }: { stats: Stat[] }) {
+  const t = useT();
   return (
     <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
       {stats.map((s) => (
-        <AnimatedStat key={s.label} value={s.value} label={s.label} />
+        <AnimatedStat key={s.label} value={s.value} label={t(s.label)} />
       ))}
     </div>
   );
@@ -66,6 +68,7 @@ export function CTASection({
 }
 
 export function TeamCard({ member }: { member: TeamMember }) {
+  const t = useT();
   return (
     <div className="rounded-xl border border-border bg-card p-5">
       {member.photo ? (
@@ -84,14 +87,15 @@ export function TeamCard({ member }: { member: TeamMember }) {
             .join("")}
         </div>
       )}
-      <h3 className="text-lg">{member.role}</h3>
-      <p className="mt-0.5 text-sm font-medium text-primary">{member.name}</p>
-      <p className="mt-2 text-sm text-muted-foreground">{member.bio}</p>
+      <h3 className="text-lg">{t(member.role)}</h3>
+      <p className="mt-0.5 text-sm font-medium text-primary">{t(member.name)}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{t(member.bio)}</p>
     </div>
   );
 }
 
 export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const t = useT();
   return (
     <figure className="card-elegant flex h-full flex-col p-6">
       <Quote className="size-6 text-gold" />
@@ -109,7 +113,7 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         )}
         <div>
           <p className="text-sm font-semibold text-primary">{testimonial.name}</p>
-          <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+          <p className="text-xs text-muted-foreground">{t(testimonial.role)}</p>
         </div>
       </figcaption>
     </figure>
@@ -118,6 +122,7 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 /** One testimonial given room to breathe: portrait beside a long-form quote. */
 export function FeaturedTestimonial({ testimonial }: { testimonial: Testimonial }) {
+  const t = useT();
   return (
     <figure className="card-elegant grid items-stretch overflow-hidden p-0 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)]">
       {testimonial.photo && (
@@ -137,7 +142,7 @@ export function FeaturedTestimonial({ testimonial }: { testimonial: Testimonial 
         </blockquote>
         <figcaption className="mt-7 border-t border-border pt-5">
           <p className="font-display text-lg text-primary">{testimonial.name}</p>
-          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+          <p className="text-sm text-muted-foreground">{t(testimonial.role)}</p>
         </figcaption>
       </div>
     </figure>
@@ -145,7 +150,8 @@ export function FeaturedTestimonial({ testimonial }: { testimonial: Testimonial 
 }
 
 export function BlogCard({ post }: { post: BlogPost }) {
-  const date = new Date(post.date).toLocaleDateString("en-KE", {
+  const { t, locale } = useLang();
+  const date = new Date(post.date).toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -157,16 +163,21 @@ export function BlogCard({ post }: { post: BlogPost }) {
       className="card-elegant group flex flex-col p-6"
     >
       <p className="text-xs font-medium text-primary">
-        {post.category}
+        {t(post.category)}
         {post.author && (
-          <span className="font-normal text-muted-foreground"> · By {post.author.name}</span>
+          <span className="font-normal text-muted-foreground">
+            {" "}
+            · {t("By")} {post.author.name}
+          </span>
         )}
       </p>
       <h3 className="mt-3 text-xl leading-snug group-hover:text-primary">{post.title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
       <div className="mt-5 flex items-center justify-between text-xs text-muted-foreground">
         <span>{date}</span>
-        <span>{post.readMinutes} min read</span>
+        <span>
+          {post.readMinutes} {t("min read")}
+        </span>
       </div>
     </Link>
   );
