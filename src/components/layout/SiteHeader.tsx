@@ -18,12 +18,12 @@ export function SiteHeader() {
             alt={`${ORG.name} logo`}
             className="h-11 w-11 object-contain"
           />
-          <span className="hidden text-lg font-semibold leading-tight sm:block">
+          <span className="hidden text-lg font-semibold leading-tight lg:block">
             EduCareer <span className="text-primary">Connect</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 md:flex lg:gap-6">
           {NAV.map((n) => {
             const active = pathname === n.href;
             return (

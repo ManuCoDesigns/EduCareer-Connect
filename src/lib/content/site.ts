@@ -18,6 +18,7 @@ export const NAV = [
   { label: "Programs", href: "/programs" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
+  { label: "Press", href: "/press" },
   { label: "Membership", href: "/membership" },
   { label: "Contact", href: "/contact" },
 ];

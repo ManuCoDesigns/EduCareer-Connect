@@ -113,6 +113,45 @@ function PressPage() {
       </Section>
 
       <Section tone="muted">
+        <Reveal>
+          <div className="card-elegant grid gap-6 p-6 sm:p-10 lg:grid-cols-[1.4fr_1fr]">
+            <div>
+              <p className="text-xs font-medium text-primary">For journalists and partners</p>
+              <h2 className="mt-2 text-2xl sm:text-3xl">About {ORG.abbreviation} in brief</h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                {ORG.name} ({ORG.abbreviation}) is a Kenyan career-guidance, counselling and
+                mentorship organisation based in {ORG.location}. Founded by {ORG.founder}, it helps
+                learners choose CBE pathways with confidence and grow into competent, purpose-driven
+                professionals.
+              </p>
+            </div>
+            <dl className="space-y-3 text-sm">
+              <div>
+                <dt className="text-xs font-medium text-primary">Media contact</dt>
+                <dd className="mt-1 text-foreground">{ORG.founder}, Founder</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-medium text-primary">Email</dt>
+                <dd className="mt-1">
+                  <a className="text-foreground hover:text-primary" href={`mailto:${ORG.email}`}>
+                    {ORG.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs font-medium text-primary">Phone</dt>
+                <dd className="mt-1">
+                  <a className="text-foreground hover:text-primary" href={`tel:${ORG.phone}`}>
+                    {ORG.phoneDisplay}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section>
         <CTASection
           title="Covering our work?"
           lede="Journalists and partners are welcome to reach out for interviews, photos and facts about ECCO."
