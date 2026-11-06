@@ -21,7 +21,7 @@ import {
 } from "@/components/common/Blocks";
 import { PROGRAMS, VALUES } from "@/lib/content/programs";
 import { STATS, TESTIMONIALS } from "@/lib/content/misc";
-import { ORG } from "@/lib/content/site";
+import { ORG, QUICK_LINKS } from "@/lib/content/site";
 import { PRESS } from "@/lib/content/press";
 import { useT } from "@/lib/i18n";
 import { pageMeta, organizationSchema } from "@/lib/seo";
@@ -128,6 +128,29 @@ function Home() {
         <section className="border-b border-border bg-secondary/40">
           <PageContainer className="py-12">
             <StatStrip stats={STATS} />
+          </PageContainer>
+        </section>
+
+        <section className="border-b border-border">
+          <PageContainer className="py-10">
+            <p className="text-xs font-medium uppercase tracking-wide text-primary">
+              {t("Quick links")}
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {QUICK_LINKS.map((q) => (
+                <Link
+                  key={q.href}
+                  to={q.href}
+                  className="card-elegant group flex items-center justify-between gap-4 p-4 transition-colors hover:border-primary/40"
+                >
+                  <span>
+                    <span className="block font-medium text-foreground">{t(q.label)}</span>
+                    <span className="mt-0.5 block text-sm text-muted-foreground">{t(q.text)}</span>
+                  </span>
+                  <ArrowRight className="size-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
           </PageContainer>
         </section>
 

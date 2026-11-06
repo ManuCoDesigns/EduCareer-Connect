@@ -454,4 +454,14 @@ export const SW_CONTENT: Record<string, string> = {
   "Praise and Worship Leader (Full Gospel Churches of Kenya, Kakamega East District)":
     "Kiongozi wa Sifa na Kuabudu (Full Gospel Churches of Kenya, Wilaya ya Kakamega Mashariki)",
   "Youth Pastor (JCC Church Wote)": "Mchungaji wa Vijana (JCC Church Wote)",
+  "Get involved": "Shiriki nasi",
+  "About us": "Kuhusu sisi",
+  "Quick links": "Viungo vya haraka",
+  "Free career guidance for your child.": "Mwongozo wa taaluma bila malipo kwa mtoto wako.",
+  "Workshops, career days and mentorship programs.":
+    "Warsha, siku za taaluma na programu za ulezi.",
+  "Free guides and worksheets to download.": "Miongozo na karatasi za bure za kupakua.",
+  "Join the ECCO community.": "Jiunge na jamii ya ECCO.",
+  "Support a learner's future.": "Saidia maisha ya baadaye ya mwanafunzi.",
+  "Meet the people behind ECCO.": "Kutana na watu walio nyuma ya ECCO.",
 };

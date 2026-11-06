@@ -13,29 +13,74 @@ export const ORG = {
   siteUrl: "https://www.educareer-connect.org",
 };
 
-export const NAV = [
-  { label: "About", href: "/about" },
-  { label: "Programs", href: "/programs" },
-  { label: "Gallery", href: "/gallery" },
+export type NavLink = { label: string; href: string };
+export type NavItem = NavLink | { label: string; children: NavLink[] };
+
+/** Header navigation. Entries with `children` become dropdowns on desktop. */
+export const NAV: NavItem[] = [
+  {
+    label: "About",
+    children: [
+      { label: "About us", href: "/about" },
+      { label: "Team", href: "/team" },
+      { label: "Gallery", href: "/gallery" },
+    ],
+  },
+  {
+    label: "Programs",
+    children: [
+      { label: "Programs", href: "/programs" },
+      { label: "Book a session", href: "/book" },
+      { label: "Resources", href: "/resources" },
+    ],
+  },
+  { label: "Events", href: "/events" },
   { label: "Blog", href: "/blog" },
   { label: "Press", href: "/press" },
-  { label: "Membership", href: "/membership" },
+  {
+    label: "Get involved",
+    children: [
+      { label: "Membership", href: "/membership" },
+      { label: "Donate", href: "/donate" },
+    ],
+  },
   { label: "Contact", href: "/contact" },
 ];
 
-export const FOOTER_LINKS = [
-  { label: "About us", href: "/about" },
-  { label: "Programs", href: "/programs" },
-  { label: "Book a session", href: "/book" },
-  { label: "Team", href: "/team" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Events", href: "/events" },
-  { label: "Resources", href: "/resources" },
-  { label: "Blog", href: "/blog" },
-  { label: "In the press", href: "/press" },
-  { label: "Donate", href: "/donate" },
-  { label: "Membership", href: "/membership" },
-  { label: "Contact", href: "/contact" },
+/** Footer link columns. */
+export const FOOTER_GROUPS: Array<{ title: string; links: NavLink[] }> = [
+  {
+    title: "Explore",
+    links: [
+      { label: "About us", href: "/about" },
+      { label: "Programs", href: "/programs" },
+      { label: "Team", href: "/team" },
+      { label: "Gallery", href: "/gallery" },
+      { label: "Blog", href: "/blog" },
+      { label: "In the press", href: "/press" },
+    ],
+  },
+  {
+    title: "Get involved",
+    links: [
+      { label: "Book a session", href: "/book" },
+      { label: "Events", href: "/events" },
+      { label: "Resources", href: "/resources" },
+      { label: "Membership", href: "/membership" },
+      { label: "Donate", href: "/donate" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+];
+
+/** Home-page quick links: everything a visitor may want, without scrolling. */
+export const QUICK_LINKS: Array<NavLink & { text: string }> = [
+  { label: "Book a session", href: "/book", text: "Free career guidance for your child." },
+  { label: "Events", href: "/events", text: "Workshops, career days and mentorship programs." },
+  { label: "Resources", href: "/resources", text: "Free guides and worksheets to download." },
+  { label: "Membership", href: "/membership", text: "Join the ECCO community." },
+  { label: "Donate", href: "/donate", text: "Support a learner's future." },
+  { label: "Team", href: "/team", text: "Meet the people behind ECCO." },
 ];
 
 /**

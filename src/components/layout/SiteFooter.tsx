@@ -11,7 +11,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { toast } from "sonner";
-import { FOOTER_LINKS, SOCIAL_LINKS, ORG } from "@/lib/content/site";
+import { FOOTER_GROUPS, SOCIAL_LINKS, ORG } from "@/lib/content/site";
 import type { SocialLink } from "@/lib/content/site";
 import { useT } from "@/lib/i18n";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
@@ -62,7 +62,7 @@ export function SiteFooter() {
   const t = useT();
   return (
     <footer className="hero-surface">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.2fr]">
         <div>
           <Link to="/" className="flex items-center gap-3">
             <img src="/images/logo.png" alt="" className="h-12 w-12 object-contain" />
@@ -83,23 +83,25 @@ export function SiteFooter() {
           <NewsletterForm />
         </div>
 
-        <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-primary-foreground/60">
-            {t("Explore")}
-          </p>
-          <ul className="mt-4 space-y-2.5">
-            {FOOTER_LINKS.map((l) => (
-              <li key={l.href}>
-                <Link
-                  to={l.href}
-                  className="text-sm text-primary-foreground/80 transition-colors hover:text-gold"
-                >
-                  {t(l.label)}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {FOOTER_GROUPS.map((g) => (
+          <div key={g.title}>
+            <p className="text-xs font-medium uppercase tracking-wide text-primary-foreground/60">
+              {t(g.title)}
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {g.links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    to={l.href}
+                    className="text-sm text-primary-foreground/80 transition-colors hover:text-gold"
+                  >
+                    {t(l.label)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-primary-foreground/60">

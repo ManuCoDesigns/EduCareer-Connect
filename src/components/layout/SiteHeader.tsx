@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Phone } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { NAV, ORG } from "@/lib/content/site";
@@ -12,7 +12,6 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const t = useT();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const links = NAV.flatMap((n) => ("children" in n ? n.children : [n]));
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur">
@@ -28,17 +27,58 @@ export function SiteHeader() {
           </span>
         </Link>
 
+        <nav className="hidden items-center gap-3 md:flex lg:gap-5">
+          {NAV.map((n) => {
+            if ("children" in n) {
+              const groupActive = n.children.some((c) => c.href === pathname);
+              return (
+                <div key={n.label} className="group relative">
+                  <button
+                    type="button"
+                    aria-haspopup="menu"
+                    className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary ${
+                      groupActive ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    {t(n.label)}
+                    <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+                  </button>
+                  <div className="invisible absolute left-1/2 top-full z-50 w-48 -translate-x-1/2 pt-3 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <div className="rounded-xl border border-border bg-popover p-1.5 shadow-lg">
+                      {n.children.map((c) => (
+                        <Link
+                          key={c.href}
+                          to={c.href}
+                          className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary ${
+                            pathname === c.href ? "text-primary" : "text-foreground"
+                          }`}
+                        >
+                          {t(c.label)}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            const active = pathname === n.href;
+            return (
+              <Link
+                key={n.href}
+                to={n.href}
+                data-active={active}
+                className={`nav-link text-sm font-medium transition-colors hover:text-primary ${
+                  active ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                {t(n.label)}
+              </Link>
+            );
+          })}
+        </nav>
+
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={`tel:${ORG.phone}`}
-            className="hidden items-center gap-1.5 text-sm text-muted-foreground hover:text-primary lg:flex"
-          >
-            <Phone className="size-3.5 text-gold" /> {ORG.phoneDisplay}
-          </a>
           <LanguageToggle />
-          <Button asChild size="sm" variant="outline">
-            <Link to="/donate">{t("Donate")}</Link>
-          </Button>
           <Button asChild size="sm">
             <Link to="/membership">{t("Join ECCO")}</Link>
           </Button>
@@ -76,26 +116,6 @@ export function SiteHeader() {
           </SheetContent>
         </Sheet>
       </div>
-
-      <nav aria-label="Main" className="hidden border-t border-border/60 bg-secondary/40 md:block">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-5 gap-y-1 px-4 py-2 lg:gap-x-7">
-          {links.map((n) => {
-            const active = pathname === n.href;
-            return (
-              <Link
-                key={n.href}
-                to={n.href}
-                data-active={active}
-                className={`nav-link text-sm font-medium transition-colors hover:text-primary ${
-                  active ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {t(n.label)}
-              </Link>
-            );
-          })}
-        </div>
-      </nav>
     </header>
   );
 }
