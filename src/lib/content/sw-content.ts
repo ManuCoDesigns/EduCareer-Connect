@@ -145,14 +145,24 @@ export const SW_CONTENT: Record<string, string> = {
     "Anapanga na kutekeleza programu za mwongozo na ulezi.",
   "Manages outreach, advocacy and public engagement.":
     "Anasimamia ufikiaji wa jamii, utetezi na ushirikishwaji wa umma.",
-  "ECCO is led by an Executive Committee. The AGM is held annually, executive meetings quarterly, with a quorum of 50%.":
-    "ECCO inaongozwa na Kamati ya Utendaji. Mkutano Mkuu hufanyika kila mwaka, mikutano ya kamati kila robo mwaka, na akidi ya 50%.",
+  "ECCO is led by an Executive Director and Co-Directors. The AGM is held annually, with a quorum of 50%.":
+    "ECCO inaongozwa na Mkurugenzi Mtendaji na Wakurugenzi Wenza. Mkutano Mkuu hufanyika kila mwaka, na akidi ya 50%.",
+  "Executive Director": "Mkurugenzi Mtendaji",
+  "Founder & Executive Director": "Mwanzilishi na Mkurugenzi Mtendaji",
+  "Co-Director": "Mkurugenzi Mwenza",
+  "Co-Director, ECCO": "Mkurugenzi Mwenza, ECCO",
+  Host: "Mwenyeji",
+  "Founded ECCO and leads its vision, programs and day-to-day work.":
+    "Alianzisha ECCO na kuongoza dira, programu na kazi ya kila siku.",
+  "Educator, counselor and youth mentor, serving schools, universities and churches.":
+    "Mwalimu, mshauri nasaha na mlezi wa vijana, anayehudumia shule, vyuo vikuu na makanisa.",
+  "Educator and youth mentor.": "Mwalimu na mlezi wa vijana.",
 
   // Team
   "Our team": "Timu yetu",
   "The people behind ECCO.": "Watu walio nyuma ya ECCO.",
-  "A founder-led organization guided by a volunteer Executive Committee, accountable to members at each Annual General Meeting.":
-    "Shirika linaloongozwa na mwanzilishi, likisimamiwa na Kamati ya Utendaji ya kujitolea, inayowajibika kwa wanachama katika kila Mkutano Mkuu wa Mwaka.",
+  "A founder-led organization guided by an Executive Director and Co-Directors, accountable to members at each Annual General Meeting.":
+    "Shirika linaloongozwa na mwanzilishi, likisimamiwa na Mkurugenzi Mtendaji na Wakurugenzi Wenza, linalowajibika kwa wanachama katika kila Mkutano Mkuu wa Mwaka.",
   "Victoria founded ECCO to close the gap between classroom learning and real career pathways for Kenyan learners, guiding its vision and day-to-day work since inception.":
     "Victoria alianzisha ECCO kuziba pengo kati ya masomo ya darasani na njia halisi za taaluma kwa wanafunzi wa Kenya, akiongoza dira na kazi ya kila siku tangu kuanzishwa.",
   "Teaches mathematics and integrated science at Makueni School":
@@ -167,9 +177,8 @@ export const SW_CONTENT: Record<string, string> = {
   "Read the feature in the press →": "Soma makala kwenye vyombo vya habari →",
   "Core competencies": "Umahiri mkuu",
   "Ministry roles": "Majukumu ya huduma",
-  "Executive Committee": "Kamati ya Utendaji",
-  "Interested in serving on the Executive Committee?":
-    "Unataka kuhudumu katika Kamati ya Utendaji?",
+  Leadership: "Uongozi",
+  "Interested in serving with us?": "Unataka kuhudumu pamoja nasi?",
   "Get in touch.": "Wasiliana nasi.",
 
   // Gallery
@@ -296,7 +305,7 @@ export const SW_CONTENT: Record<string, string> = {
   "EduCareer Connect Organization (ECCO) is a Kenyan career-guidance, counselling and mentorship organisation based in Wote, Makueni County, Kenya. Founded by Victoria Wakoli, it helps learners choose CBE pathways with confidence and grow into competent, purpose-driven professionals.":
     "EduCareer Connect Organization (ECCO) ni shirika la Kenya la mwongozo wa taaluma, ushauri nasaha na ulezi lenye makao Wote, Kaunti ya Makueni, Kenya. Lilianzishwa na Victoria Wakoli, na huwasaidia wanafunzi kuchagua mikondo ya CBE kwa kujiamini na kukua kuwa wataalamu wenye umahiri na dhamira.",
   "Media contact": "Mawasiliano ya vyombo vya habari",
-  "Founder, ECCO": "Mwanzilishi, ECCO",
+  "Founder & Executive Director, ECCO": "Mwanzilishi na Mkurugenzi Mtendaji, ECCO",
 
   // Events
   "No dates announced yet": "Hakuna tarehe zilizotangazwa bado",
@@ -310,9 +319,23 @@ export const SW_CONTENT: Record<string, string> = {
   "School visits where learners meet working professionals, ask questions and see what different careers really involve.":
     "Ziara za shuleni ambapo wanafunzi hukutana na wataalamu, kuuliza maswali na kuona taaluma mbalimbali zinahusu nini hasa.",
   "Annual General Meeting": "Mkutano Mkuu wa Mwaka",
-  "Members review the year, hear from the Executive Committee and vote, as set out in our constitution.":
-    "Wanachama hupitia mwaka, husikia kutoka Kamati ya Utendaji na kupiga kura, kama ilivyoainishwa katika katiba yetu.",
+  "Members review the year, hear from the Directors and vote, as set out in our constitution.":
+    "Wanachama hupitia mwaka, husikia kutoka kwa Wakurugenzi na kupiga kura, kama ilivyoainishwa katika katiba yetu.",
   "Past events": "Matukio yaliyopita",
+  "Mentorship programs": "Programu za ulezi",
+  "Multi-day programs where learners meet mentors, build their networks and get guidance on careers and life skills.":
+    "Programu za siku kadhaa ambapo wanafunzi hukutana na walezi, hujenga mtandao wao na kupata mwongozo kuhusu taaluma na stadi za maisha.",
+  "Mentorship Program": "Programu ya Ulezi",
+  "Two days of mentorship for learners, led by ECCO's Directors with Min. Ruth Kuria as host. Invest in your future.":
+    "Siku mbili za ulezi kwa wanafunzi, zikiongozwa na Wakurugenzi wa ECCO, mwenyeji akiwa Min. Ruth Kuria. Wekeza katika maisha yako ya baadaye.",
+  "Career guidance based on pathways": "Mwongozo wa taaluma kulingana na mikondo",
+  "Building social network": "Kujenga mtandao wa kijamii",
+  "Guidance & counseling": "Mwongozo na ushauri nasaha",
+  "Soft skills enhancement": "Kuboresha stadi laini",
+  "Our focus": "Lengo letu",
+  "Meet your mentors": "Kutana na walezi wako",
+  "For registration & contact": "Kwa usajili na mawasiliano",
+  poster: "bango",
 
   // Book
   "Step 1": "Hatua ya 1",

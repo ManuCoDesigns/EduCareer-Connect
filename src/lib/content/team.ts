@@ -6,6 +6,7 @@ export type TeamMember = {
   bio: string;
   photo?: string;
   quote?: string;
+  linkedin?: string;
 };
 
 /** Founder highlights, paraphrased from VVOB in Kenya coverage (2025). Verify they are still current. */
@@ -19,7 +20,8 @@ export const FOUNDER_HIGHLIGHTS: string[] = [
 
 export const FOUNDER: TeamMember = {
   name: "Victoria Wakoli",
-  role: "Founder",
+  role: "Founder & Executive Director",
+  linkedin: "https://www.linkedin.com/in/victoria-wakoli-9b4230206",
   bio: "Victoria founded ECCO to close the gap between classroom learning and real career pathways for Kenyan learners, guiding its vision and day-to-day work since inception.",
   quote:
     "I believe that education is the most powerful tool to transform lives and communities. My purpose as a teacher is to ignite curiosity, build confidence, and empower every learner to reach their full potential.",
@@ -45,7 +47,7 @@ export type TeamProfile = {
 
 export const GODFREY_CHESA: TeamProfile = {
   name: "Godfrey Chesa",
-  role: "Secretary",
+  role: "Co-Director",
   photo: "/images/godfrey-chesa-avatar.jpg",
   portrait: "/images/godfrey-chesa.jpg",
   credentials: "B.Ed Arts (Geography / Business Studies), University of Eldoret",
@@ -83,37 +85,29 @@ export const GODFREY_CHESA: TeamProfile = {
 
 export const GOVERNANCE: TeamMember[] = [
   {
-    name: "Position open",
-    role: "Chairperson",
-    bio: "Leads the Executive Committee and represents the organization.",
-  },
-  {
-    name: "Position open",
-    role: "Vice Chairperson",
-    bio: "Deputises the Chairperson and supports oversight.",
+    name: FOUNDER.name,
+    role: "Executive Director",
+    photo: "/images/victoria-team.jpg",
+    bio: "Founded ECCO and leads its vision, programs and day-to-day work.",
   },
   {
     name: GODFREY_CHESA.name,
     role: GODFREY_CHESA.role,
     photo: GODFREY_CHESA.photo,
-    bio: "Educator, counselor and youth mentor. Keeps records, correspondence and minutes of all meetings.",
+    bio: "Educator, counselor and youth mentor, serving schools, universities and churches.",
   },
   {
-    name: "Position open",
-    role: "Treasurer",
-    bio: "Safeguards funds; accounts are audited annually.",
+    name: "Augustine Ngovi",
+    role: "Co-Director",
+    photo: "/images/augustine-ngovi.jpg",
+    bio: "Educator and youth mentor.",
   },
   {
-    name: "Position open",
-    role: "Programs Coordinator",
-    bio: "Plans and delivers guidance and mentorship programs.",
-  },
-  {
-    name: "Position open",
-    role: "Communications Officer",
-    bio: "Manages outreach, advocacy and public engagement.",
+    name: "Gregory Walucho",
+    role: "Co-Director",
+    bio: "",
   },
 ];
 
 export const GOVERNANCE_NOTE =
-  "ECCO is led by an Executive Committee. The AGM is held annually, executive meetings quarterly, with a quorum of 50%.";
+  "ECCO is led by an Executive Director and Co-Directors. The AGM is held annually, with a quorum of 50%.";

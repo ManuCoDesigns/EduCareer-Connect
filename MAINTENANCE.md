@@ -14,7 +14,7 @@ Content lives in `src/lib/content/*.ts`. Edit the data, never the components.
 9. **Health**: open every page on the live site, send a test contact message, check Search Console for errors.
 
 ## Other content files
-- **Events**: add to `UPCOMING` in `events.ts` (move finished ones to `PAST`).
+- **Events**: add one entry to `EVENTS` in `events.ts` (with a `date`, and `endDate` if multi-day). It moves to "Past events" automatically after it ends.
 - **Resources**: put the PDF in `public/resources/`, then add an entry in `resources.ts`.
 - **Swahili**: add `"English text": "Kiswahili"` to `sw.ts`; the text must match the English exactly and be wrapped in `t()`.
 - **Admin**: `/admin` (not linked anywhere). Sign in with the admin account to review messages, bookings, payments, donations and subscribers, change statuses and export CSV.

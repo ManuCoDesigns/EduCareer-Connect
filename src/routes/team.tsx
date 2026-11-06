@@ -20,7 +20,7 @@ export const Route = createFileRoute("/team")({
   head: () =>
     pageMeta({
       title: "Our team",
-      description: `Meet the people behind ${ORG.abbreviation}: founder ${FOUNDER.name}, ${GODFREY_CHESA.role} ${GODFREY_CHESA.name}, and the Executive Committee.`,
+      description: `Meet the people behind ${ORG.abbreviation}: founder ${FOUNDER.name}, ${GODFREY_CHESA.role} ${GODFREY_CHESA.name}, and the Co-Directors.`,
       path: "/team",
     }),
   component: TeamPage,
@@ -34,7 +34,7 @@ function TeamPage() {
       <PageHero
         eyebrow="Our team"
         title="The people behind ECCO."
-        lede="A founder-led organization guided by a volunteer Executive Committee, accountable to members at each Annual General Meeting."
+        lede="A founder-led organization guided by an Executive Director and Co-Directors, accountable to members at each Annual General Meeting."
       />
       <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: "Team" }]} />
 
@@ -68,6 +68,16 @@ function TeamPage() {
             >
               {t("Read the feature in the press →")}
             </Link>
+            {FOUNDER.linkedin && (
+              <a
+                href={FOUNDER.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block text-sm font-medium text-primary hover:underline"
+              >
+                LinkedIn ↗
+              </a>
+            )}
             {FOUNDER.quote && (
               <blockquote className="mt-6 border-l-2 border-gold pl-4 text-sm italic leading-relaxed text-foreground">
                 “{FOUNDER.quote}”
@@ -77,7 +87,7 @@ function TeamPage() {
         </div>
       </Section>
 
-      <Section id="secretary" tone="muted">
+      <Section id="godfrey-chesa" tone="muted">
         <div className="grid items-start gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
           <Reveal>
             <p className="text-xs font-medium text-primary">{t(GODFREY_CHESA.role)}</p>
@@ -143,14 +153,14 @@ function TeamPage() {
       </Section>
 
       <Section>
-        <SectionHeading title="Executive Committee" lede={GOVERNANCE_NOTE} />
+        <SectionHeading title="Leadership" lede={GOVERNANCE_NOTE} />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {GOVERNANCE.map((g) => (
             <TeamCard key={g.role} member={g} />
           ))}
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
-          {t("Interested in serving on the Executive Committee?")}{" "}
+          {t("Interested in serving with us?")}{" "}
           <a href={`mailto:${ORG.email}`} className="font-medium text-primary hover:underline">
             {t("Get in touch")}
           </a>

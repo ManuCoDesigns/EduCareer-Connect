@@ -91,7 +91,7 @@ const GODFREY_SECTION_HEADINGS: Record<number, string> = {
 };
 
 /**
- * The Secretary's biography as a blog post. Built from the same source as the
+ * Godfrey Chesa's biography as a blog post. Built from the same source as the
  * Team page, so editing his bio in team.ts updates both places.
  */
 function godfreyProfileBody(): string {
@@ -134,7 +134,7 @@ Let's close the gap together.`,
   },
   {
     slug: "meet-godfrey-chesa-ecco-secretary",
-    title: "Meet Godfrey Chesa, ECCO's Secretary",
+    title: "Meet Godfrey Chesa, ECCO Co-Director",
     excerpt:
       "Educator, counselor, youth mentor and minister of the Gospel, Godfrey Chesa has mentored over 4,000 youth and reached more than 10 universities and tertiary institutions across Kenya.",
     body: godfreyProfileBody(),

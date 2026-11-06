@@ -116,7 +116,9 @@ function Home() {
                 <img src="/images/logo.png" alt="" className="size-11 object-contain" />
                 <div>
                   <p className="text-sm font-semibold text-foreground">{ORG.founder}</p>
-                  <p className="text-xs text-muted-foreground">{t("Founder, ECCO")}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("Founder & Executive Director, ECCO")}
+                  </p>
                 </div>
               </div>
             </div>

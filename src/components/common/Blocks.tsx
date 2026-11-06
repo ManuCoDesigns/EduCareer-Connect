@@ -80,7 +80,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
         />
       ) : (
         <div className="icon-badge mb-4 flex size-16 items-center justify-center rounded-full text-lg font-semibold text-primary-foreground">
-          {member.role
+          {(member.name === "Position open" ? member.role : member.name)
             .split(" ")
             .map((w) => w[0])
             .slice(0, 2)
@@ -89,7 +89,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
       )}
       <h3 className="text-lg">{t(member.role)}</h3>
       <p className="mt-0.5 text-sm font-medium text-primary">{t(member.name)}</p>
-      <p className="mt-2 text-sm text-muted-foreground">{t(member.bio)}</p>
+      {member.bio && <p className="mt-2 text-sm text-muted-foreground">{t(member.bio)}</p>}
     </div>
   );
 }

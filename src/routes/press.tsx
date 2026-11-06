@@ -133,7 +133,7 @@ function PressPage() {
               <div>
                 <dt className="text-xs font-medium text-primary">{t("Media contact")}</dt>
                 <dd className="mt-1 text-foreground">
-                  {ORG.founder}, {t("Founder")}
+                  {ORG.founder}, {t("Executive Director")}
                 </dd>
               </div>
               <div>

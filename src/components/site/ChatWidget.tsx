@@ -50,9 +50,9 @@ function buildKnowledgeBase(): KnowledgeEntry[] {
   );
 
   add(
-    "team leadership leaders committee executive board runs leads staff people",
+    "team leadership leaders director co-director directors executive board runs leads staff people",
     `${FOUNDER.name} ${GODFREY_CHESA.name} ${GODFREY_CHESA.role}`,
-    `${ORG.abbreviation} was founded by ${FOUNDER.name} and is guided by an Executive Committee, with ${GODFREY_CHESA.name} as ${GODFREY_CHESA.role}. You can meet the team on our Team page.`,
+    `${ORG.abbreviation} was founded by ${FOUNDER.name}, who serves as Executive Director, with ${GODFREY_CHESA.name}, Augustine Ngovi and Gregory Walucho as Co-Directors. You can meet the team on our Team page.`,
   );
 
   add(
@@ -74,9 +74,9 @@ function buildKnowledgeBase(): KnowledgeEntry[] {
   );
 
   add(
-    "events workshop career day agm annual general meeting upcoming calendar",
+    "events workshop career day agm annual general meeting upcoming calendar mentorship mombasa december",
     "events workshops career days annual general meeting",
-    "We run workshops, school career days and an Annual General Meeting for members. See what's coming up on our Events page, or subscribe to our newsletter to be told first.",
+    "We run workshops, school career days and an Annual General Meeting for members. Our next event is the Mentorship Program in Mombasa on 4th–5th December (career guidance, social networks, counseling and soft skills). Register on +254 796 040 638 or +254 711 520 205, and see the Events page for details, or subscribe to our newsletter to be told first.",
   );
 
   add(
