@@ -105,6 +105,7 @@ export const GOVERNANCE: TeamMember[] = [
   {
     name: "Gregory Walucho",
     role: "Co-Director",
+    photo: "/images/gregory-walucho.jpg",
     bio: "",
   },
 ];
